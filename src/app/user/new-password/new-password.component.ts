@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../shared/authentication.service';
 import {Router} from '@angular/router';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-new-password',
@@ -12,8 +13,16 @@ export class NewPasswordComponent implements OnInit {
   password: string;
   confirmPassword: string;
   errorMessage: string = "";
+  myLinkElement: HTMLLinkElement;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+    constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
+        this.myLinkElement = document.createElement('link');
+        this.myLinkElement.href = "assets/css/material-kit-pro.min3294.css?v=3.0.1";
+        this.myLinkElement.rel = "stylesheet";
+        this.myLinkElement.id = "pagestyle";
+        document.body.appendChild(this.myLinkElement);
+
+    }
 
   ngOnInit(): void {
 
