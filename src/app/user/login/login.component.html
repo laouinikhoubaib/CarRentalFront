@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                    <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../../assets/img/illustrations/illustration-signin.jpg'); background-size: cover;" loading="lazy"></div>
-                </div>
+                    <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../../assets/img/illustrations/illustration-signin.jpg'); " loading="lazy"></div>
+                </div>background-size: cover;
                 <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
                     <div class="card card-plain">
                         <div class="card-header text-center">
@@ -83,6 +83,10 @@
                             <p class="mb-4 text-sm mx-auto">
                                 Vous n’avez pas de compte ?
                                 <a href="javascript:;" class="text-primary text-gradient font-weight-bold" (click)="redirectTo()">Enregistrer</a>
+                            </p>
+                            <p class="mb-4 text-sm mx-auto">
+                                Can't login ?
+                                <a href="javascript:;" class="text-primary text-gradient font-weight-bold" routerLink="/reset-password">Reset your password</a>
                             </p>
                         </div>
                     </div>

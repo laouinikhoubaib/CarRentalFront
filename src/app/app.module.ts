@@ -85,7 +85,6 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TreeModule} from 'primeng/tree';
 import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
-
 import {AppCodeModule} from './app.code.component';
 import {AppComponent} from './app.component';
 import {AppMainComponent} from './app.main.component';
@@ -141,8 +140,6 @@ import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
-import { CourseComponent } from './course/course.component';
-import { DetailsComponent } from './course/details/details.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './user/home/home.component';
@@ -291,8 +288,6 @@ import {NewPasswordComponent} from './user/new-password/new-password.component';
         AppErrorComponent,
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
-        CourseComponent,
-        DetailsComponent,
         RegisterComponent,
         LoginComponent,
         UserDetailsComponent,
