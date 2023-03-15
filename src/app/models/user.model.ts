@@ -12,8 +12,8 @@ export class User {
     locked: boolean = false;
     accessToken!: string;
     refreshToken!: string;
-    nbCasesSolved!: number;
-    nbEventsCreated!: number;
+    address!: string;
+    profilPic!: string;
 
 
 

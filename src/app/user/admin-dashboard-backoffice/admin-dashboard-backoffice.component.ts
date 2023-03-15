@@ -24,47 +24,11 @@ export class AdminDashboardBackofficeComponent implements OnInit {
   allAdmins: Array<User> = [];
 
   lineData: any;
-
   allUsers: Array<User> = [];
-
-  countryList: Array<string> = [];
-
-  countryValues: Array<number> = [];
-
-  colors: Array<string> = [];
-
-  allSubscribedUsers: Array<User> = [];
-
-  customers1: Customer[];
-
-  customers2: Customer[];
-
-  customers3: Customer[];
-
-  selectedCustomers1: Customer[];
-
-  selectedCustomer: Customer;
-
-  representatives: Representative[];
-
-  statuses: any[];
-
-  products: Product[];
-
-  rowGroupMetadata: any;
-
-  activityValues: number[] = [0, 100];
-
-  @ViewChild('dt') table: Table;
-
-  cols: any[];
-
-  items: MenuItem[];
-
-  ordersChart: any;
+    selectedCustomers1: any;
 
 
-  revenueChart: any;
+
 
   constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService,
               private userService: UserService, private customerService: CustomerService, private router: Router) {
@@ -76,33 +40,13 @@ export class AdminDashboardBackofficeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getAllAdmins().subscribe(allAdmins => {
+
+    this.userService.getAllAdmins().subscribe( allAdmins => {
       this.allAdmins = allAdmins;
     });
-
-
-    this.userService.getAllUser().subscribe(users => {
+      this.userService.getAllUser().subscribe(users => {
       this.allUsers = users;
     });
-
-
-    this.cols = [
-      {field: 'vin', header: 'Vin'},
-      {field: 'year', header: 'Year'},
-      {field: 'brand', header: 'Brand'},
-      {field: 'color', header: 'Color'}
-    ];
-
-    this.items = [{
-      label: 'Shipments',
-      items: [
-        {label: 'Tracker', icon: 'pi pi-compass'},
-        {label: 'Map', icon: 'pi pi-map-marker'},
-        {label: 'Manage', icon: 'pi pi-pencil'}
-      ]
-    }
-    ];
-
 
   }
 

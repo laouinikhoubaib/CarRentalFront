@@ -45,10 +45,20 @@ import {ProfilComponent} from './user/profil/profil.component';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
 import {NewPasswordComponent} from './user/new-password/new-password.component';
+import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {Role} from './models/role.enum';
+import {AuthGuard} from './guards/auth.guard';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+
+            {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                children: [
+                    {path: '', component: AdminDashboardBackofficeComponent},
+
+                ]
+            },
 
             {
                 path: '', component: AppMainComponent,
@@ -88,8 +98,7 @@ import {NewPasswordComponent} from './user/new-password/new-password.component';
                 ]
             },
 
-            {
-                path: 'user', component: HomeComponent,
+            {path: 'user', component: HomeComponent,
                 children: [
                     {path: 'landing', component: FrontLandingComponent},
                     {path: 'profil', component: ProfilComponent}
