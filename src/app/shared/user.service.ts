@@ -50,11 +50,11 @@ export class UserService extends  RequestBaseService{
   }
 
   unlockUser(username: string){
-    return this.http.put('http://localhost:8087/SpringMVC/api/admin/unlock', username, {headers: this.getHeaders});
+    return this.http.put('http://localhost:8080/SpringMVC/api/admin/unlock', username, {headers: this.getHeaders});
   }
 
   lockUser(username: string){
-    return this.http.put('http://localhost:8087/SpringMVC/api/admin/lock', username, {headers: this.getHeaders});
+    return this.http.put('http://localhost:8080/SpringMVC/api/admin/lock', username, {headers: this.getHeaders});
   }
 
   makeAdmin(username: string): Observable<any> {
@@ -63,6 +63,6 @@ export class UserService extends  RequestBaseService{
   }
 
   getAllAdmins(): Observable<any>{
-    return this.http.get('http://localhost:8087/SpringMVC/api/admin/admins', {headers: this.getHeaders});
+    return this.http.get('http://localhost:8080/SpringMVC/api/admin/admins', {headers: this.getHeaders});
   }
 }

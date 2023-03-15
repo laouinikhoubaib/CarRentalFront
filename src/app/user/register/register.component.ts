@@ -46,7 +46,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.user.role = Role.ADMIN;
     else if (this.middleRole == 'SUPERADMIN'){
       this.user.role = Role.SUPERADMIN;
-      this.user.nbCasesSolved = 0;
     }
 
     this.userParsed = JSON.stringify(this.user);

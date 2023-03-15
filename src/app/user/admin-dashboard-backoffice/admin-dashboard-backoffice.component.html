@@ -22,22 +22,6 @@
                 </div>
             </div>
         </div>
-        <div class="p-col-12 p-md-6 p-xl-3">
-            <div class="card no-gutter widget-overview-box widget-overview-box-1">
-                            <span class="overview-icon">
-                                <i class="pi pi-shopping-cart"></i>
-                            </span>
-                <span class="overview-title">Events</span>
-            </div>
-        </div>
-        <div class="p-col-12 p-md-6 p-xl-3">
-            <div class="card no-gutter widget-overview-box widget-overview-box-2">
-                            <span class="overview-icon">
-                                <i class="pi pi-dollar"></i>
-                            </span>
-                <span class="overview-title">Forums</span>
-            </div>
-        </div>
 
         <div class="p-col-12 p-md-6 p-xl-3">
             <div class="card no-gutter widget-overview-box widget-overview-box-4">
@@ -104,26 +88,16 @@
                     <li>
                         <span>Member</span>
                     </li>
+                    <li *ngFor="let admin of allAdmins">
+                        <span>
+                            <img src="assets/img/{{admin.profilPic}}" alt="diamond-layout"/>
+                            <span>{{admin.name}}</span>
+                        </span>
+                    </li>
 
                 </ul>
             </div>
         </div>
-
-        <div class="p-col-12 p-lg-8">
-            <div class="card revenue">
-                <h4>Users origins</h4>
-                <p>Comparison of users nations by country</p>
-                <div class="revenue-chart-container">
-                    <p-chart type="pie" id="revenue-chart" [data]="revenueChart"></p-chart>
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="centerText">Subscription rate along the year</h5>
-                <p-chart type="line" [data]="lineData"></p-chart>
-            </div>
-        </div>
-
 
 
         <div class="p-grid table-demo">
@@ -131,12 +105,14 @@
                 <div class="card">
                     <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
                              styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
-                             [filterDelay]="0" [globalFilterFields]="['name','country', 'email', 'birthDate', 'phoneNumber','locked']">
+                             [filterDelay]="0" [globalFilterFields]="['name','username', 'email', 'phoneNumber','locked']">
                         <ng-template pTemplate="caption">
                             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                                 Customers
                                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
                 </span>
                             </div>
                         </ng-template>
@@ -201,16 +177,11 @@
                                     <span class="p-column-title">Name</span>
                                     {{customer.name}}
                                 </td>
+
                                 <td>
                                     <span class="p-column-title">Email</span>
                                     <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.email}}</span>
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Date</span>
-                                    <div *ngIf="customer.role === 'USER' || customer.role === 'ADMIN' || customer.role === 'EXPERT' || customer.role === 'FORMER'">{{customer.birthDate | date: 'MM/dd/yyyy'}}</div>
-                                    <div *ngIf="customer.role === 'COMPANY' || customer.role === 'ASSOCIATION'">{{customer.establishmentDate | date: 'MM/dd/yyyy'}}</div>
-                                </td>
-                                <td>
+
                                     <span class="p-column-title">Contact</span>
                                     {{customer.phoneNumber}}
                                 </td>

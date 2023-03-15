@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:8087/SpringMVC'
+  BASE_URL: 'http://localhost:8080/SpringMVC'
 };
 
 /*
