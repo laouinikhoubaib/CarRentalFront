@@ -42,80 +42,88 @@ import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
 import {ProfilComponent} from './user/profil/profil.component';
-import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
 import {NewPasswordComponent} from './user/new-password/new-password.component';
-import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
-import {Role} from './models/role.enum';
+import {UserDetailsComponent} from './user/user-details/user-details.component';
 import {AuthGuard} from './guards/auth.guard';
+import {Role} from './models/role.enum';
+import {Auth2Guard} from './guards/auth2.guard';
+import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot([
+        imports: [
+            RouterModule.forRoot([
+                {
+                    path: '', component: HomeComponent,
+                    children: [
+                        {path: '', component: FrontLandingComponent},
+                        {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
+                        {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
 
-            {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
-                children: [
-                    {path: '', component: AdminDashboardBackofficeComponent},
+                    ]
+                },
 
-                ]
-            },
+                {
+                    path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                    children: [
+                        {path: '', component: AdminDashboardBackofficeComponent},
+                        {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+                        {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
+                        {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
+                        {path: 'uikit/input', component: InputDemoComponent},
+                        {path: 'uikit/button', component: ButtonDemoComponent},
+                        {path: 'uikit/table', component: TableDemoComponent},
+                        {path: 'uikit/list', component: ListDemoComponent},
+                        {path: 'uikit/tree', component: TreeDemoComponent},
+                        {path: 'uikit/panel', component: PanelsDemoComponent},
+                        {path: 'uikit/overlay', component: OverlaysDemoComponent},
+                        {path: 'uikit/menu', component: MenusDemoComponent},
+                        {path: 'uikit/media', component: MediaDemoComponent},
+                        {path: 'uikit/message', component: MessagesDemoComponent},
+                        {path: 'uikit/misc', component: MiscDemoComponent},
+                        {path: 'uikit/charts', component: ChartsDemoComponent},
+                        {path: 'uikit/file', component: FileDemoComponent},
+                        {path: 'utilities/display', component: DisplayComponent},
+                        {path: 'utilities/elevation', component: ElevationComponent},
+                        {path: 'utilities/flexbox', component: FlexboxComponent},
+                        {path: 'utilities/grid', component: GridComponent},
+                        {path: 'utilities/icons', component: IconsComponent},
+                        {path: 'utilities/widgets', component: WidgetsComponent},
+                        {path: 'utilities/spacing', component: SpacingComponent},
+                        {path: 'utilities/typography', component: TypographyComponent},
+                        {path: 'utilities/text', component: TextComponent},
+                        {path: 'pages/calendar', component: AppCalendarComponent},
+                        {path: 'pages/timeline', component: AppTimelineDemoComponent},
+                        {path: 'pages/invoice', component: AppInvoiceComponent},
+                        {path: 'pages/help', component: AppHelpComponent},
+                        {path: 'pages/empty', component: EmptyDemoComponent},
+                        {path: 'documentation', component: DocumentationComponent},
 
-            {
-                path: '', component: AppMainComponent,
-                children: [
-                    {path: '', component: DashboardDemoComponent},
-                    {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
-                    {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
-                    {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
-                    {path: 'uikit/input', component: InputDemoComponent},
-                    {path: 'uikit/button', component: ButtonDemoComponent},
-                    {path: 'uikit/table', component: TableDemoComponent},
-                    {path: 'uikit/list', component: ListDemoComponent},
-                    {path: 'uikit/tree', component: TreeDemoComponent},
-                    {path: 'uikit/panel', component: PanelsDemoComponent},
-                    {path: 'uikit/overlay', component: OverlaysDemoComponent},
-                    {path: 'uikit/menu', component: MenusDemoComponent},
-                    {path: 'uikit/media', component: MediaDemoComponent},
-                    {path: 'uikit/message', component: MessagesDemoComponent},
-                    {path: 'uikit/misc', component: MiscDemoComponent},
-                    {path: 'uikit/charts', component: ChartsDemoComponent},
-                    {path: 'uikit/file', component: FileDemoComponent},
-                    {path: 'utilities/display', component: DisplayComponent},
-                    {path: 'utilities/elevation', component: ElevationComponent},
-                    {path: 'utilities/flexbox', component: FlexboxComponent},
-                    {path: 'utilities/grid', component: GridComponent},
-                    {path: 'utilities/icons', component: IconsComponent},
-                    {path: 'utilities/widgets', component: WidgetsComponent},
-                    {path: 'utilities/spacing', component: SpacingComponent},
-                    {path: 'utilities/typography', component: TypographyComponent},
-                    {path: 'utilities/text', component: TextComponent},
-                    {path: 'pages/calendar', component: AppCalendarComponent},
-                    {path: 'pages/timeline', component: AppTimelineDemoComponent},
-                    {path: 'pages/invoice', component: AppInvoiceComponent},
-                    {path: 'pages/help', component: AppHelpComponent},
-                    {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent}
-                ]
-            },
+                    ]
+                },
 
-            {path: 'user', component: HomeComponent,
-                children: [
-                    {path: 'landing', component: FrontLandingComponent},
-                    {path: 'profil', component: ProfilComponent}
-                ]
-            },
-            {path: 'error', component: AppErrorComponent},
-            {path: 'access', component: AppAccessdeniedComponent},
-            {path: 'notfound', component: AppNotfoundComponent},
-            {path: 'register', component: RegisterComponent},
-            {path: 'login', component: LoginComponent},
-            {path: 'user-details', component: UserDetailsComponent},
-            {path: 'reset-password', component: ForgotPasswordComponent},
-            {path: 'new-password', component: NewPasswordComponent},
-            {path: '**', redirectTo: '/notfound'},
-        ], {scrollPositionRestoration: 'enabled'})
-    ],
-    exports: [RouterModule]
-})
+                {
+                    path: 'user', component: HomeComponent,
+                    children: [
+                        {path: 'landing', component: FrontLandingComponent},
+                        {path: 'profil', component: ProfilComponent},
+                        {path: 'profil/:id', component: UserDetailsComponent},
+                                            ]
+                },
+
+                {path: 'error', component: AppErrorComponent},
+                {path: 'access', component: AppAccessdeniedComponent},
+                {path: 'notfound', component: AppNotfoundComponent},
+                {path: 'register', component: RegisterComponent},
+                {path: 'reset-password', component: ForgotPasswordComponent},
+                {path: 'new-password', component: NewPasswordComponent},
+                {path: 'login', component: LoginComponent},
+                {path: '**', redirectTo: '/notfound'},
+            ])
+        ],
+        exports: [RouterModule]
+    }
+)
 export class AppRoutingModule {
 }

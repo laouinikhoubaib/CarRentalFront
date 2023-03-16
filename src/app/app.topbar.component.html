@@ -12,16 +12,7 @@
 
     <div class="topbar-right">
         <ul class="topbar-menu">
-            <li class="search-item">
-                <a tabindex="0" (click)="appMain.onSearchClick($event)">
-                    <i class="pi pi-search"></i>
-                </a>
-            </li>
             <li class='notifications-item' [ngClass]="{'active-menuitem ': appMain.topbarNotificationMenuActive}">
-                <a href="#" tabindex="0" (click)="appMain.onTopbarNotificationMenuButtonClick($event)">
-                    <i class="pi pi-bell"></i>
-                    <span class="topbar-badge">5</span>
-                </a>
                 <ul class="notifications-menu fade-in-up">
                     <li role="menuitem">
                         <a href="#" tabindex="0">
@@ -73,8 +64,8 @@
 
             <li class="profile-item" [ngClass]="{'active-menuitem fadeInDown': appMain.topbarUserMenuActive}">
                 <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)">
-                    <img src="assets/demo/images/avatar/profile.jpg" alt="diamond-layout" class="profile-image"/>
-                    <span class="profile-name">Amelia Stone</span>
+                    <img src="assets/img/{{profilPicture}}" alt="diamond-layout" class="profile-image"/>
+                    <span class="profile-name">{{currentUser.name}}</span>
                 </a>
                 <ul class="profile-menu fade-in-up">
                     <li>

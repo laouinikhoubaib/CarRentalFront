@@ -14,6 +14,8 @@ export class User {
     refreshToken!: string;
     address!: string;
     profilPic!: string;
+    birthDate!: Date;
+    establishmentDate!: Date;
 
 
 

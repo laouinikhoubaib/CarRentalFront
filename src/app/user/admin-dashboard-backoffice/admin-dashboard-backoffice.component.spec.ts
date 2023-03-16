@@ -10,7 +10,7 @@ describe('AdminDashboardBackofficeComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ AdminDashboardBackofficeComponent ]
     })
-    .compileComponents();
+        .compileComponents();
   });
 
   beforeEach(() => {

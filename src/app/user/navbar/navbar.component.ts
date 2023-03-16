@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
       this.currentUser = new User();
       this.currentUser.name = "";
       this.currentUser.userId = 0;
-      this.currentUser.username = "";
+      this.currentUser.userId = 0;
       this.currentUser.password = "";
       this.currentUser.accessToken = "";
       this.currentUser.phoneNumber = "";
