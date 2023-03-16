@@ -1,20 +1,13 @@
 <div class="layout-dashboard">
     <div class="p-grid">
 
-
-
-
         <div class="p-col-12 p-md-6 p-xl-3">
             <div class="card no-gutter widget-overview-box widget-overview-box-3">
                             <span class="overview-icon">
                                 <i class="pi pi-users"></i>
                             </span>
-                <span class="overview-title">Customers</span>
+                <span class="overview-title">Utilisateurs</span>
                 <div class="p-grid overview-detail">
-                    <div class="p-col-6">
-                        <div class="overview-number">{{subscribedUsers.length}}</div>
-                        <div class="overview-subtext">Subscribed</div>
-                    </div>
                     <div class="p-col-6">
                         <div class="overview-number">{{allUsers.length}}</div>
                         <div class="overview-subtext">Registered</div>
@@ -23,70 +16,13 @@
             </div>
         </div>
 
-        <div class="p-col-12 p-md-6 p-xl-3">
-            <div class="card no-gutter widget-overview-box widget-overview-box-4">
-                            <span class="overview-icon">
-                                <i class="pi pi-comment"></i>
-                            </span>
-                <span class="overview-title">Complaints</span>
-                <div class="p-grid overview-detail">
-                    <div class="p-col-6">
-                        <div class="overview-number">0</div>
-                        <div class="overview-subtext">New</div>
-                    </div>
-                    <div class="p-col-6">
-                        <div class="overview-number">0</div>
-                        <div class="overview-subtext">Responded</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="p-col-12 p-lg-4">
-            <div class="card widget-tasks">
-                <h4>Tasks</h4>
-                <p>Overview of your pending tasks.</p>
-                <div>
-                    <div class="task task-1">
-                        <div class="task-name"><span>12 Orders</span> to fulfill</div>
-                        <div class="task-progress">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="task task-2">
-                        <div class="task-name"><span>40+ Payments</span> to withdraw</div>
-                        <div class="task-progress">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="task task-3">
-                        <div class="task-name"><span>4 Reports</span> to revise</div>
-                        <div class="task-progress">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="task task-4">
-                        <div class="task-name"><span>6 Questions</span> to respond</div>
-                        <div class="task-progress">
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="task task-5">
-                        <div class="task-name"><span>2 Chargebacks</span> to review</div>
-                        <div class="task-progress">
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="card">
-                <h4>Administration Squad</h4>
-                <p>Most active admins that work within our team</p>
-
+                <h4>Escouade administrative</h4>
+                <p>Les administrateurs les plus actifs qui travaillent au sein de notre équipe</p>
                 <ul class="widget-image-list">
                     <li>
-                        <span>Member</span>
+                        <span>Members</span>
                     </li>
                     <li *ngFor="let admin of allAdmins">
                         <span>
@@ -105,7 +41,7 @@
                 <div class="card">
                     <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
                              styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
-                             [filterDelay]="0" [globalFilterFields]="['name','username', 'email', 'phoneNumber','locked']">
+                             [filterDelay]="0" [globalFilterFields]="['name','address', 'email', 'establishmentDate', 'phoneNumber','locked']">
                         <ng-template pTemplate="caption">
                             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                                 Customers
@@ -128,11 +64,11 @@
                                         <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
                                 </th>
-                                <th pSortableColumn="country">
+                                <th pSortableColumn="address">
                                     <div class="p-d-flex p-jc-between p-ai-center">
-                                        Country
-                                        <p-sortIcon field="country"></p-sortIcon>
-                                        <p-columnFilter type="text" field="country" display="menu" class="p-ml-auto"></p-columnFilter>
+                                        Adresse
+                                        <p-sortIcon field="address"></p-sortIcon>
+                                        <p-columnFilter type="text" field="address" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
                                 </th>
                                 <th pSortableColumn="email" style="width: 20rem">
@@ -144,7 +80,7 @@
                                 </th>
                                 <th pSortableColumn="birthDate">
                                     <div class="p-d-flex p-jc-between p-ai-center">
-                                        Date
+                                        Date de naissance
                                         <p-sortIcon field="birthDate"></p-sortIcon>
                                         <p-columnFilter type="date" field="birthDate" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
@@ -172,16 +108,24 @@
                                     <p-tableCheckbox [value]="customer"></p-tableCheckbox>
                                 </td>
                                 <td>
-                                    <img src="assets/img/{{customer.profilPic}}" width="32" height="32"
+                                    <img src="assets/img/{{customer.profilPic}}" width="40" height="40"
                                          style="vertical-align: middle" class="profil-pic-round"/>
                                     <span class="p-column-title">Name</span>
                                     {{customer.name}}
                                 </td>
-
+                                <td>
+                                <span class="p-column-title">Adresse</span>
+                                {{customer.address}}
+                                </td>
                                 <td>
                                     <span class="p-column-title">Email</span>
                                     <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.email}}</span>
-
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Date</span>
+                                    {{customer.birthDate | date: 'MM/dd/yyyy'}}
+                                </td>
+                                <td>
                                     <span class="p-column-title">Contact</span>
                                     {{customer.phoneNumber}}
                                 </td>
@@ -201,7 +145,7 @@
                         </ng-template>
                         <ng-template pTemplate="emptymessage">
                             <tr>
-                                <td colspan="8">No customers found.</td>
+                                <td colspan="8">Aucun utilisateur trouvé.</td>
                             </tr>
                         </ng-template>
                     </p-table>

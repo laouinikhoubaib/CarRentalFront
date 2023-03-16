@@ -76,7 +76,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "diamond-ng:build"
+
           },
+
           "configurations": {
             "production": {
               "browserTarget": "diamond-ng:build:production"
@@ -104,6 +106,7 @@
               "src/styles.scss"
             ],
             "scripts": []
+
           }
         },
         "lint": {

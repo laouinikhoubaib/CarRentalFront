@@ -1,4 +1,5 @@
 
+
 <section>
     <div class="page-header min-vh-100">
         <div class="container">
@@ -10,55 +11,71 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
                     <div class="card card-plain">
                         <div class="card-header">
-                            <h4 class="font-weight-bolder">Sign Up</h4>
+                            <h4 class="font-weight-bolder">Inscription</h4>
                             <p class="mb-0">Il suffit de quelques minutes pour créer votre compte !</p>
                         </div>
                         <div class="card-body">
                             <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && register()">
-                                        <div class="row justify-space-between text-center py-2">
-
-
-                                                <div class="row">
-                                                    <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
-                                                        {{errorMessage}}
-                                                    </div>
-                                                </div>
+                                <div class="row justify-space-between text-center py-2">
 
 
 
-
-                                            <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
-                                                Veuillez préciser votre rôle
-                                            </p>
-                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="role" id="role1" [(ngModel)]="middleRole" #role="ngModel" [value]="'USER'" autocomplete="off">
-                                                    <label class="btn btn-outline-dark" for="role1"><i class="pi pi-user"></i>&nbsp; Agent</label>
-
-                                                    <input type="radio" class="btn-check" name="role" id="role2" [(ngModel)]="middleRole" #role="ngModel" [value]="'ADMIN'" autocomplete="off">
-                                                    <label class="btn btn-outline-dark" for="role2"><i class="pi pi-desktop"></i>&nbsp;Admin</label>
-
-                                                    <input type="radio" class="btn-check" name="role" id="role3" [(ngModel)]="middleRole" #role="ngModel" [value]="'SUPERADMIN'" autocomplete="off">
-                                                    <label class="btn btn-outline-dark" for="role3"><i class="pi pi-calendar"></i>&nbsp;SuperAdmin</label>
-                                                </div>
-                                            <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
-                                                Informations personnelles
-                                            </p>
+                                    <div class="row">
+                                        <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                                            {{errorMessage}}
                                         </div>
+                                    </div>
+
+
+
+
+                                    <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
+                                        Veuillez spécifier votre role
+                                    </p>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="role" id="role1" [(ngModel)]="middleRole" #role="ngModel" [value]="'USER'" autocomplete="off">
+                                        <label class="btn btn-outline-dark" for="role1"><i class="pi pi-user"></i>&nbsp; User</label>
+
+                                        <input type="radio" class="btn-check" name="role" id="role2" [(ngModel)]="middleRole" #role="ngModel" [value]="'ADMIN'" autocomplete="off">
+                                        <label class="btn btn-outline-dark" for="role2"><i class="pi pi-desktop"></i>&nbsp;ADMIN</label>
+
+                                        <input type="radio" class="btn-check" name="role" id="role3" [(ngModel)]="middleRole" #role="ngModel" [value]="'SUPERADMIN'" autocomplete="off">
+                                        <label class="btn btn-outline-dark" for="role3"><i class="pi pi-calendar"></i>&nbsp;SUPERADMIN</label>
+                                    </div>
+
+                                    <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
+                                        Informations personnelles
+                                    </p>
+                                </div>
+
 
                                 <div class="input-group input-group-outline mb-3">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" #name="ngModel" required>
+                                    <label class="form-label">Nom</label>
+                                    <input type="text" class="form-control" id="nom" name="email" [(ngModel)]="user.name" #name="ngModel" class="form-control" required>
                                 </div>
+
                                 <div class="input-group input-group-outline mb-3">
                                     <label class="form-label">Email</label>
                                     <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control" required>
                                 </div>
 
+                                <div class="input-group input-group-outline mb-3" >
+                                    <label class="form-label">Date de naissance</label>
+                                    <input type="date" id="birthDate" class="form-control" name="birthDate" [(ngModel)]="user.birthDate" #birthDate="ngModel" required>
+                                </div>
 
 
                                 <div class="input-group input-group-outline mb-3">
-                                    <label class="form-label">Numéro de téléphone
-                                    </label>
+                                    <label class="form-label">Adresse</label>
+                                    <input type="text" class="form-control" id="address" name="address" class="form-control" [(ngModel)]="user.address" #address="ngModel" required>
+                                </div>
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Date d'établissement</label>
+                                    <input type="date" id="establishmentDate" class="form-control" name="establishmentDate" [(ngModel)]="user.establishmentDate" #establishmentDate="ngModel" required placeholder="">                                </div>
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Phone Number</label>
                                     <input type="phone" id="phone" name="phone" [(ngModel)]="user.phoneNumber" #phone="ngModel" class="form-control" required>
                                 </div>
 
@@ -73,15 +90,15 @@
                                         Informations de connexion
                                     </p>
                                 </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Username</label>
-                                        <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
-                                    </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
+                                </div>
 
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Mot de passe</label>
-                                        <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
-                                    </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Mot de passe</label>
+                                    <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+                                </div>
 
 
 
@@ -89,12 +106,11 @@
                                 <div class="form-check form-check-info text-start ps-0">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
-                                        J'accepte les <a href="javascript:;" class="text-dark font-weight-bolder">Conditions générales
-                                    </a>
+                                        J'accepte les <a href="javascript:;" class="text-dark font-weight-bolder">Termes et les Conditions</a>
                                     </label>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Enregistrement</button>
+                                    <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Enregistrer</button>
                                 </div>
                             </form>
 
@@ -104,7 +120,7 @@
                             <div class="row px-xl-5 px-sm-4 px-3">
                                 <div class="mt-3 mb-4 position-relative text-center">
                                     <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
-                                        ou
+                                        or
                                     </p>
                                 </div>
                                 <div class="col-3 ms-auto px-1">
@@ -151,7 +167,7 @@
                         <div class="card-footer text-center pt-0 px-lg-2 px-1">
                             <p class="mb-2 text-sm mx-auto">
                                 Vous avez déjà un compte ?
-                                <a href="javascript:;" class="text-primary text-gradient font-weight-bold" (click)="redirectTo()">Connectez-vous</a>
+                                <a href="javascript:;" class="text-primary text-gradient font-weight-bold" (click)="redirectTo()">connectez-vous</a>
                             </p>
                         </div>
                     </div>
@@ -160,3 +176,4 @@
         </div>
     </div>
 </section>
+

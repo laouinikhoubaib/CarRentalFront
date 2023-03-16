@@ -22,12 +22,9 @@ export class AdminDashboardBackofficeComponent implements OnInit {
   subscribedUsers: Array<User> = [];
 
   allAdmins: Array<User> = [];
-
   lineData: any;
   allUsers: Array<User> = [];
-    selectedCustomers1: any;
-
-
+  selectedCustomers1: any;
 
 
   constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService,

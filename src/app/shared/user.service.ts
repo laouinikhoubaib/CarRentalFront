@@ -58,7 +58,7 @@ export class UserService extends  RequestBaseService{
   }
 
   makeAdmin(username: string): Observable<any> {
-    const userUrl = `http://localhost:8087/SpringMVC/api/admin/makeAdmin/${username}`;
+    const userUrl = `http://localhost:8080/SpringMVC/api/admin/makeAdmin/${username}`;
     return this.http.put(userUrl, null,  {headers: this.getHeaders});
   }
 
