@@ -22,12 +22,11 @@ export class NavbarComponent implements OnInit {
     });
     if (this.currentUser == null){
       this.currentUser = new User();
-      this.currentUser.name = "";
+      this.currentUser.username = "";
       this.currentUser.userId = 0;
       this.currentUser.userId = 0;
       this.currentUser.password = "";
       this.currentUser.accessToken = "";
-      this.currentUser.phoneNumber = "";
       this.currentUser.email = "";
       this.currentUser.refreshToken = "";
 

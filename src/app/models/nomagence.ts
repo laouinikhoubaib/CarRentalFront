@@ -1,0 +1,37 @@
+
+
+export enum NomAgence{
+    Annemasse = 'Annemasse',
+    Paris_05='Paris_05',
+    Paris_10='Paris_10',
+    Paris_12='Paris_12',
+    Paris_13='Paris_13',
+    Paris_14='Paris_14',
+    Paris_19='Paris_19',
+    Paris_20='Paris_20',
+    Claye_Souilly='Claye_Souilly',
+    Meaux='Meaux',
+    Boulogne_Billancourt='Boulogne_Billancourt',
+    Clichy_La_Garenne='Clichy_La_Garenne',
+    Montrouge='Montrouge',
+    Bobigny='Bobigny',
+    Bondy='Bondy',
+    Drancy='Drancy',
+    Blanc_Mesnill='Blanc_Mesnill',
+    Les_Lilas='Les_Lilas',
+    Livry_Gargan='Livry_Gargan',
+    Montreuil='Montreuil',
+    Noisy_Le_Sec='Noisy_Le_Sec',
+    Pantin='Pantin',
+    Romainville='Romainville',
+    Rosny_Sous_Bois='Rosny_Sous_Bois',
+    Saint_Ouen='Saint_Ouen',
+    Champigny_sur_Marne='Champigny_sur_Marne',
+    Kremlin_Bicetre='Kremlin_Bicetre',
+    Saint_Maur_des_Fossées='Saint_Maur_des_Fossées',
+    Villiers_sur_Marne='Villiers_sur_Marne',
+    Gonesse='Gonesse',
+    Goussainville='Goussainville',
+    Sarcelles='Sarcelles'
+
+}

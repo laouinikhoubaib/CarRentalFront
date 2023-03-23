@@ -1,0 +1,75 @@
+<div class="col-md-4">
+    <!-- Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nouvelle Agence</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        <div class="input-group input-group-outline my-3">
+
+                                <label class="form-label">Nom d'agence</label>
+                            <select class="form-control" name="name" [(ngModel)]="newAgence.nomagence"  #name="ngModel" id="choice-button" placeholder="Language" required>
+                                <option value="Annemasse" selected>Annemasse</option>
+                                <option value="Paris_05">Paris_05</option>
+                                <option value="Paris_10">Paris_10</option>
+                                <option value="Paris_12">Paris_12</option>
+                                <option value="Paris_13" selected>Paris_13</option>
+                                <option value="Paris_14">Paris_14</option>
+                                <option value="Paris_19">Paris_19</option>
+                                <option value="Paris_20">Paris_20</option>
+                                <option value="Claye_Souilly" selected>Claye_Souilly</option>
+                                <option value="Meaux">Meaux</option>
+                                <option value="Boulogne_Billancourt">Boulogne_Billancourt</option>
+                                <option value="Clichy_La_Garenne">Clichy_La_Garenne</option>
+                                <option value="Montrouge" selected>Montrouge</option>
+                                <option value="Bobigny">Bobigny</option>
+                                <option value="Bondy">Bondy</option>
+                                <option value="Drancy">Drancy</option>
+                                <option value="Blanc_Mesnill" selected>Blanc_Mesnill</option>
+                                <option value="Les_Lilas">Les_Lilas</option>
+                                <option value="Livry_Gargan">Livry_Gargan</option>
+                                <option value="Montreuil">Montreuil</option>
+                                <option value="Noisy_Le_Sec" selected>Noisy_Le_Sec</option>
+                                <option value="Pantin">Pantin</option>
+                                <option value="Romainville">Romainville</option>
+                                <option value="Rosny_Sous_Bois">Rosny_Sous_Bois</option>
+                                <option value="Saint_Ouen" selected>Saint_Ouen</option>
+                                <option value="Champigny_sur_Marne">Champigny_sur_Marne</option>
+                                <option value="Kremlin_Bicetre">Kremlin_Bicetre</option>
+                                <option value="Saint_Maur_des_Fossées">Saint_Maur_des_Fossées</option>
+                                <option value="Villiers_sur_Marne" selected>Villiers_sur_Marne</option>
+                                <option value="Gonesse">Gonesse</option>
+                                <option value="Goussainville">Goussainville</option>
+                                <option value="Sarcelles">Sarcelles</option>
+                            </select>
+
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+
+                                <label class="form-label">Type d'agence</label>
+
+                            <select class="form-control" name="name" [(ngModel)]="newAgence.typeagence"  #name="ngModel" id="choice-button" placeholder="Language" required>
+                                <option value="normale" selected>normale</option>
+                                <option value="franchise">franchise</option>
+                            </select>
+                                 </div>
+                        <div class="input-group input-group-outline my-3">
+
+                            <label class="form-label">Numéro de téléphone</label>
+
+                            <input type="text" [(ngModel)]= "newAgence.phoneNumber" name="az" class="form-control">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" (click)="addAgence()" class="btn bg-gradient-primary">Ajouter agence</button>
+                </div>
+            </div>
+        </div>

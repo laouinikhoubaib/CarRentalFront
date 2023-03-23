@@ -27,7 +27,7 @@
                     <li *ngFor="let admin of allAdmins">
                         <span>
                             <img src="assets/img/{{admin.profilPic}}" alt="diamond-layout"/>
-                            <span>{{admin.name}}</span>
+                            <span>{{admin.username}}</span>
                         </span>
                     </li>
 
@@ -41,7 +41,7 @@
                 <div class="card">
                     <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
                              styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
-                             [filterDelay]="0" [globalFilterFields]="['name','address', 'email', 'establishmentDate', 'phoneNumber','locked']">
+                             [filterDelay]="0" [globalFilterFields]="['username', 'email', 'establishmentDate','locked']">
                         <ng-template pTemplate="caption">
                             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                                 Customers
@@ -64,13 +64,7 @@
                                         <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
                                 </th>
-                                <th pSortableColumn="address">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Adresse
-                                        <p-sortIcon field="address"></p-sortIcon>
-                                        <p-columnFilter type="text" field="address" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
+
                                 <th pSortableColumn="email" style="width: 20rem">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         Email
@@ -78,20 +72,7 @@
                                         <p-columnFilter type="text" field="email" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
                                 </th>
-                                <th pSortableColumn="birthDate">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Date de naissance
-                                        <p-sortIcon field="birthDate"></p-sortIcon>
-                                        <p-columnFilter type="date" field="birthDate" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
-                                <th pSortableColumn="phoneNumber">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        Contact
-                                        <p-sortIcon field="phoneNumber"></p-sortIcon>
-                                        <p-columnFilter type="text" field="phoneNumber" display="menu" class="p-ml-auto"></p-columnFilter>
-                                    </div>
-                                </th>
+
                                 <th pSortableColumn="locked">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         Status
@@ -110,25 +91,14 @@
                                 <td>
                                     <img src="assets/img/{{customer.profilPic}}" width="40" height="40"
                                          style="vertical-align: middle" class="profil-pic-round"/>
-                                    <span class="p-column-title">Name</span>
-                                    {{customer.name}}
-                                </td>
-                                <td>
-                                <span class="p-column-title">Adresse</span>
-                                {{customer.address}}
+                                    <span class="p-column-title">Userame</span>
+                                    {{customer.username}}
                                 </td>
                                 <td>
                                     <span class="p-column-title">Email</span>
                                     <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.email}}</span>
                                 </td>
-                                <td>
-                                    <span class="p-column-title">Date</span>
-                                    {{customer.birthDate | date: 'MM/dd/yyyy'}}
-                                </td>
-                                <td>
-                                    <span class="p-column-title">Contact</span>
-                                    {{customer.phoneNumber}}
-                                </td>
+
                                 <td>
                                     <span class="p-column-title">Status</span>
                                     <span *ngIf="customer.locked" [class]="'customer-badge status-unqualified'">Locked</span>

@@ -49,6 +49,8 @@ import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {AgenceComponent} from './agence/agence.component';
+import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                         {path: '', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
                         {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
+                        {path: 'addA', component: AddAgenceComponent},
 
                     ]
                 },
@@ -67,6 +70,8 @@ import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffi
                 {
                     path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
                     children: [
+                        {path: 'agence', component: AgenceComponent},
+                        {path: 'addAgence', component: AddAgenceComponent},
                         {path: '', component: AdminDashboardBackofficeComponent},
                         {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                         {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
