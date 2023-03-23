@@ -32,13 +32,10 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
 
         if (this.currentUser == null){
             this.currentUser = new User();
-            this.currentUser.name = "";
             this.currentUser.userId = 0;
             this.currentUser.username = "";
             this.currentUser.password = "";
             this.currentUser.accessToken = "";
-            this.currentUser.phoneNumber = "";
-            this.currentUser.birthDate = new Date();
             this.currentUser.email = "";
             this.currentUser.establishmentDate = new Date();
             this.currentUser.refreshToken = "";

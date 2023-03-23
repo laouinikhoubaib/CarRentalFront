@@ -151,6 +151,9 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
 import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
+import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
+import {UpdateAgenceComponent} from './agence/update-agence/update-agence.component';
+import {AgenceComponent} from './agence/agence.component';
 
 
 
@@ -249,6 +252,9 @@ import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backof
     declarations: [
         AppComponent,
         AppMainComponent,
+        AgenceComponent,
+        AddAgenceComponent,
+        UpdateAgenceComponent,
         AppRightmenuComponent,
         AppMenuComponent,
         AppMenuitemComponent,
