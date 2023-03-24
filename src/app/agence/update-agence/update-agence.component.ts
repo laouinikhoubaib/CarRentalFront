@@ -13,7 +13,18 @@ export class UpdateAgenceComponent implements OnInit {
     post2: Agence = new Agence();
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private compalintService: AgenceService ) { }
+              private agenceService: AgenceService ) { }
 
   ngOnInit(): void {}
- }
+    updateAgence(id: string) {
+        if (this.post1.nom === '') {
+            this.post1.nom = this.post2.nom;
+        }
+        this.agenceService.updateAgence(id, this.post1).subscribe(p => {
+            console.log(this.post1);
+            this.router.navigate(['user']).then(() => {
+                window.location.reload();
+            });
+        });
+
+    }}

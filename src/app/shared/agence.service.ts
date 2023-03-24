@@ -28,8 +28,8 @@ export class AgenceService  extends  RequestBaseService {
     return this.http.post<Agence>('http://localhost:8080/SpringMVC/api/agence/addAgence/1', agence, {headers: this.getHeaders});
   }
 
-  deleteAgence(agenceId: string) {
-    return this.http.delete('http://localhost:808./SpringMVC/SpringMVC/api/agence/deleteAgence' + agenceId, {headers: this.getHeaders});
+  deleteAgence(id: string) {
+    return this.http.delete('http://localhost:8080/SpringMVC/SpringMVC/api/agence/deleteAgence' + id, {headers: this.getHeaders});
   }
 
   updateAgence(agenceId: string , c: Agence) {
