@@ -1,42 +1,122 @@
-<h1>Liste des agences</h1>
-<div _ngcontent-tvm-c92 class="card">
-    <div class="p-datatable-header ng-star-inserted"><div _ngcontent-fwi-c180="" class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header ng-star-inserted"> Agence <span _ngcontent-fwi-c180="" class="p-input-icon-left"><i _ngcontent-fwi-c180="" class="pi pi-search"></i><input _ngcontent-fwi-c180="" pinputtext="" type="text" placeholder="Global Search" class="p-inputtext p-component"></span></div><!--bindings={
-  "ng-reflect-ng-template-outlet": "[object Object]"
-}-->
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+        <!--<div class="row">
+            <div class="col-md-9">1</div>
+            <div class="col-md-3">3</div>
+        </div>-->
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+                                   </ng-template>
+
+                <ng-template pTemplate="right">
+
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [value]="listagence">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Gestion des agences</h5>
+                        <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                    </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+
+                    <tr>
+                        <th style="width: 3rem">
+
+                        </th>
+                        <th pSortableColumn="name">Nom d'agence <p-sortIcon field="name"></p-sortIcon></th>
+
+                        <th pSortableColumn="numero">Numéro de téléphone <p-sortIcon field="numero"></p-sortIcon></th>
+                        <th pSortableColumn="type">Type d'agence<p-sortIcon field="type"></p-sortIcon></th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-newAgence  >
+
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.nom}}
+                        </td>
+
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.numero}}
+                        </td>
+
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.typeagence}}
+                        </td>
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteAgence(newAgence.agenceId.toString())"></button>
+
+                        </td>
+
+                    </tr>
+
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        Il y' a eu  {{listagence ? listagence.length : 0 }} Agence.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Ajouter une agence" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+
+                <div class="p-field">
+                    <label for="nom">Nom d'agence</label>
+                    <input type="text" pInputText id="nom" [(ngModel)]="newAgence.nom" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !newAgence.nom">Nom d'agence manqauant</small>
+                </div>
+                <div class="p-field">
+                    <label for="nom">Numéro de téléphone</label>
+                    <input type="text" pInputText id="address" [(ngModel)]="newAgence.numero" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !agence1.numero">Numéro de téléphone manqauant</small>
+                </div>
+                <div class="p-field">
+                    <label class="form-label">Type d'agence</label>
+                    <select class="form-control" name="name" [(ngModel)]="newAgence.typeagence"  #name="ngModel" id="choice-button" placeholder="Language" required>
+                        <option value="normale" selected>normale</option>
+                        <option value="franchise">franchise</option>
+                    </select>
+                </div>
+
+
+
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button type="button" (click)="addAgence()" class="btn bg-gradient-primary">Ajouter agence</button>
+            </ng-template>
+        </p-dialog>
+
+
+
+
+
+
+
     </div>
-    <table>
-        <thead >
-        <tr _ngcontent-pdn-c180="" class="ng-star-inserted">
-            <Th>id</Th>
-            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
-                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>Numéro de téléphone</th>
-            <th>   <div _ngcontent-mrk-c180="" class="p-d-flex p-jc-between p-ai-center"> Nom d'agence
-            </div></th>
-            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
-                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>Type d'agence</th>
-            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
-                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>Supprimer</th>
-            <th _ngcontent-cph-c180="" psortablecolumn="name" ng-reflect-field="name" tabindex="0" role="columnheader" aria-sort="none" class="p-sortable-column">
-                <div _ngcontent-cph-c180="" class="p-d-flex p-jc-between p-ai-center"> </div>Modifier</th>
-        </thead>
-        <tbody class="p-datatable-tbody" *ngFor="let agence of listagence ">
-        <tr>
-            <td>{{agence.agenceId}}</td>
-            <td _ngcontent-gbj-c180> {{ agence.phoneNumber }} </td>
-            <td _ngcontent-gbj-c180>  {{ agence.nomagence }}</td>
-            <td _ngcontent-gbj-c180>  {{ agence.typeagence }} </td>
-            <td _ngcontent-gbj-c180><button (click)="deleteAgence(agence.agenceId.toString())"  pbutton="" pripple="" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mr-2 p-mb-2 p-ripple p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-times">
-                <span class="p-button-icon pi pi-times" aria-hidden="true"></span>
-                <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span>
-                <span class="p-ink"></span></button></td>
-            <td _ngcontent-gbj-c180><button [routerLink]="['/update-agence',agence.agenceId]" _ngcontent-gyv-c180="" pbutton="" type="button" icon="pi pi-cog" class="p-button-secondary p-button p-component p-button-icon-only" ng-reflect-icon="pi pi-cog">
-                <span class="p-button-icon pi pi-cog" aria-hidden="true"></span>
-                <span aria-hidden="true" class="p-button-label">&amp;nbsp;</span></button></td>
-        </tr>
-        </tbody>
-    </table>
-    <button [routerLink]="['/addA']" _ngcontent-afu-c112="" pbutton="" type="button" label="New" icon="pi pi-plus" ng-reflect-label="New" ng-reflect-icon="pi pi-plus" class="p-button p-component">
-        <span class="p-button-icon p-button-icon-left pi pi-plus" aria-hidden="true"></span>
-        <span  class="p-button-label" >Ajouter une agence !</span>
-    </button>
-    </div>
+
+
+
+
+
+
+</div>
+
