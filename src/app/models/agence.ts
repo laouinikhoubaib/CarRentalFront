@@ -10,4 +10,5 @@ export class Agence{
     nom!: string;
     typeagence!: TypeAgence;
     user: User;
+
 }

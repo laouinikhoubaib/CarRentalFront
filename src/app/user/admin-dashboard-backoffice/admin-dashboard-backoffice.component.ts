@@ -72,5 +72,10 @@ export class AdminDashboardBackofficeComponent implements OnInit {
     this.router.navigate([currentUrl]);
   }
 
-
+  redirectTo(){
+    this.router.navigate(['/register'])
+        .then(() => {
+          window.location.reload();
+        });
+  }
 }

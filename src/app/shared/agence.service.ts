@@ -25,7 +25,7 @@ export class AgenceService  extends  RequestBaseService {
   }
 
   createAgence(agence: Agence) {
-    return this.http.post<Agence>('http://localhost:8080/SpringMVC/api/agence/addAgence/1', agence, {headers: this.getHeaders});
+    return this.http.post<Agence>('http://localhost:8080/SpringMVC/api/agence/addAgence/', agence, {headers: this.getHeaders});
   }
 
   deleteAgence(id: string) {
