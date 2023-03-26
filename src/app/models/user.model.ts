@@ -1,4 +1,5 @@
 import {Role} from "./role.enum";
+import {Agence} from './agence';
 
 export class User {
     userId!: number;
@@ -12,7 +13,8 @@ export class User {
     refreshToken!: string;
     profilPic!: string;
     establishmentDate!: Date;
-
+    agence?: Agence;
+    nomAgence?: string;
 
 
 }

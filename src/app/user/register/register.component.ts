@@ -4,6 +4,10 @@ import {AuthenticationService} from '../../shared/authentication.service';
 import {Router} from '@angular/router';
 import {Role} from '../../models/role.enum';
 import {AppComponent} from '../../app.component';
+import {Agence} from '../../models/agence';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-register',
@@ -20,21 +24,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
   roles: Role[] = [];
   step: number = 1;
   userParsed: string = '';
+  nomAgence: string = '';
   selectedFile!: File;
+  registerForm: FormGroup;
+  submitted = false;
+  loading = false;
+  agence: Agence = new Agence();
+  agences: Agence[];
 
-  constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
+  constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router, private formBuilder: FormBuilder) {
     this.myLinkElement = document.createElement('link');
     this.myLinkElement.href = 'assets/css/material-kit-pro.min3294.css?v=3.0.1';
     this.myLinkElement.rel = 'stylesheet';
     this.myLinkElement.id = 'pagestyle';
     document.body.appendChild(this.myLinkElement);
+
   }
 
   ngOnInit(): void {
-    this.roles = [ Role.USER, Role.ADMIN, Role.SUPERADMIN ];
+    this.roles = [Role.USER, Role.ADMIN, Role.SUPERADMIN];
     this.middleRole = Role.USER;
+    // Charger la liste des agences disponibles
+     this.authenticationService.getAgences().subscribe(agences => {
+      this.agences = agences;
+    });
   }
-
   ngOnDestroy() {
     document.body.removeChild(this.myLinkElement);
   }
@@ -47,28 +61,28 @@ export class RegisterComponent implements OnInit, OnDestroy {
     else if (this.middleRole == 'SUPERADMIN'){
       this.user.role = Role.SUPERADMIN;
     }
-
     this.userParsed = JSON.stringify(this.user);
     console.log(this.userParsed);
 
-    this.authenticationService.register(this.userParsed, this.selectedFile).subscribe(data => {
+    this.authenticationService.register(this.userParsed, this.selectedFile, this.nomAgence).subscribe(data => {
           this.router.navigate(['/login']).then(() => {
             window.location.reload();
           }); },
         err => {
           if (err?.status === 409){
-            this.errorMessage = 'Username already exists';
+            this.errorMessage = 'Username existe dèja';
           }
           else if (err?.status === 400){
-            this.errorMessage = 'Email already exists';
+            this.errorMessage = 'Email existe dèja';
           }
           else if (err?.status === 406){
-            this.errorMessage = 'Password must:\n\tHave 8 or more characters' +
-                '\n\tContain 1 or more uppercase characters' +
-                '\n\tContain 1 or more digit characters\n\tContain 1 or more special characters';
+            this.errorMessage = 'Password doit avoir 8 caractères ou plus' +
+                'Contient un ou plusieurs caractères majuscules' +
+                'Contient au moins un chiffre\n' +
+                '\tContient 1 ou plusieurs caractères spéciaux';
           }
           else{
-            this.errorMessage = 'Unexpected error occurred : ' + err?.errorMessage;
+            this.errorMessage = 'Erreur est survenue : ' + err?.errorMessage;
             console.log(err);
           }
         }

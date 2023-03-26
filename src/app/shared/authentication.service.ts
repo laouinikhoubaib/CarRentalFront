@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {Agence} from '../models/agence';
 
 const API_URL = `${environment.BASE_URL}/api/authentication/`;
 
@@ -17,7 +18,8 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   helper = new JwtHelperService();
   user: User = new User();
-
+  agence: Agence = new Agence();
+  agences: Agence[];
 
 
   constructor(private http: HttpClient) {
@@ -48,11 +50,12 @@ export class AuthenticationService {
     );
   }
 
-  register(user: string, file: File): Observable<any> { //
-    const data: FormData = new FormData();
-    data.append('user', user);
-    data.append('file', file);
-    return this.http.post(API_URL + 'sign-up', data);
+  register(user: string, file: File, nom: string): Observable<any> { //
+    const formData: FormData = new FormData();
+    formData.append('user', user);
+    formData.append('file', file);
+    formData.append('agence', nom);
+    return this.http.post(API_URL + 'sign-up', formData);
   }
 
   logOut(){
@@ -90,5 +93,7 @@ export class AuthenticationService {
     }
     return false;
   }
-
+  getAgences(): Observable<Agence[]> {
+    return this.http.get<Agence[]>('http://localhost:8080/SpringMVC/api/agence/all');
+  }
 }
