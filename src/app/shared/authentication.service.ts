@@ -96,4 +96,9 @@ export class AuthenticationService {
   getAgences(): Observable<Agence[]> {
     return this.http.get<Agence[]>('http://localhost:8080/SpringMVC/api/agence/all');
   }
+
+
+  public getCurrentUser(): Observable<User> {
+    return this.currentUser;
+  }
 }

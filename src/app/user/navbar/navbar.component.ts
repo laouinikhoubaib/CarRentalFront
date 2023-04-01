@@ -15,7 +15,8 @@ export class NavbarComponent implements OnInit {
   currentUser: User = new User;
   notificationList: Array<Notification> = [];
   profilPicture!: string;
-
+  allUsers: Array<User> = [];
+  allAdmins: Array<User> = [];
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.authenticationService.currentUser.subscribe( data => {
       this.currentUser = data;

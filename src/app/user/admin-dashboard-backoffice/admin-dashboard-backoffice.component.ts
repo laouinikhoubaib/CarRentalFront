@@ -9,7 +9,7 @@ import {Customer, Representative} from '../../demo/domain/customer';
 import {Table} from 'primeng/table';
 import {CustomerService} from '../../demo/service/customerservice';
 import {User} from '../../models/user.model';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -19,16 +19,21 @@ import {Router} from '@angular/router';
 })
 export class AdminDashboardBackofficeComponent implements OnInit {
 
-  subscribedUsers: Array<User> = [];
 
-  allAdmins: Array<User> = [];
+  // allAdmins: Array<User> = [];
   lineData: any;
-  allUsers: Array<User> = [];
+  // allUsers: Array<User> = [];
   selectedCustomers1: any;
+  // users: any[];
+  userId: number;
 
 
-  constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService,
-              private userService: UserService, private customerService: CustomerService, private router: Router) {
+  userss: Array<User> = [];
+    nomAgence: string;
+    admins: Array<User> = [];
+
+
+    constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService, private userService: UserService, private customerService: CustomerService, private router: Router, private route: ActivatedRoute) {
     this.breadcrumbService.setItems([
       {label: 'Dashboard', routerLink: ['/']}
     ]);
@@ -36,16 +41,54 @@ export class AdminDashboardBackofficeComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+    ngOnInit() {
 
-    this.userService.getAllAdmins().subscribe( allAdmins => {
-      this.allAdmins = allAdmins;
-    });
-      this.userService.getAllUser().subscribe(users => {
-      this.allUsers = users;
-    });
+        // this.userService.getAllAdmins().subscribe( allAdmins => {
+        //   this.allAdmins = allAdmins;
+        // });
+        //
+        //   this.userService.getAllUser().subscribe(users => {
+        //   this.allUsers = users;
+        // });
 
-  }
+        // this.userService.findAdminByNomAgence('nomAgence').subscribe(data => {
+        //   this.users = data;
+        // });
+        //
+        // this.route.queryParams.subscribe(params => {
+        //   this.userId = params['userId'];
+        //   this.getUsersBySameAgence();
+        // });
+
+        this.userService.getCurrentUser().subscribe(
+            user => {
+                this.userId = user.userId;
+
+                // Obtenir tous les utilisateurs de la même agence
+                this.userService.getUsersBySameAgence(this.userId).subscribe(
+                    userss => {
+                        this.userss = userss;
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
+
+                // Obtenir tous les admins de la même agence triés par agence
+                this.userService.getUsersBySameAgence(this.userId).subscribe(users => {
+                    // Filtrer les administrateurs seulement
+                    this.admins = users.filter(user => user.role === 'ADMIN');
+                });
+            });
+    }
+
+
+
+
+
+
+
+
 
 
   unlockUser(username: string){
@@ -71,7 +114,6 @@ export class AdminDashboardBackofficeComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }
-
   redirectTo(){
     this.router.navigate(['/register'])
         .then(() => {

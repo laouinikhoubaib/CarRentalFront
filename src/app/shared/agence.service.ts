@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {AuthenticationService} from './authentication.service';
 import {RequestBaseService} from './request-base.service';
 import {Agence} from '../models/agence';
+import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +29,21 @@ export class AgenceService  extends  RequestBaseService {
     return this.http.post<Agence>('http://localhost:8080/SpringMVC/api/agence/addAgence/', agence, {headers: this.getHeaders});
   }
 
-  deleteAgence(id: string) {
-    return this.http.delete('http://localhost:8080/SpringMVC/SpringMVC/api/agence/deleteAgence' + id, {headers: this.getHeaders});
+  DeleteAgence(agenceId: string) {
+    return this.http.delete<Agence>('http://localhost:8080/SpringMVC/api/agence/deleteAgence/' + agenceId , {headers: this.getHeaders});
+
   }
 
   updateAgence(agenceId: string , c: Agence) {
-    return this.http.put<Agence>('http://localhost:8087/SpringMVC/api/agence/updateAgence' + agenceId + '/' , c , {headers: this.getHeaders});
+    return this.http.put<Agence>('http://localhost:8080/SpringMVC/api/agence/updateAgence' + agenceId + '/' , c , {headers: this.getHeaders});
 
+  }
+  getAgenceByNom(nom: string): Observable<Agence> {
+    return this.http.get<Agence>('http://localhost:8080/SpringMVC/api/agence/{nom}' + nom);
+  }
+
+  getUsersBySameAgence(userId: string): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:8080/SpringMVC/api/agence/same-agence' + userId);
   }
 
 }

@@ -147,19 +147,19 @@
                                     Modifier profile
                                 </a>
                             </li>
-                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
-                                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   routerLink="profil" >
-                                    <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">
-                                    {{currentUser.username}}
-                                </a>
-                            </li>
+<!--                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">-->
+<!--                                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"-->
+<!--                                   routerLink="profil" >-->
+<!--                                    <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">-->
+<!--                                    {{currentUser.username}}-->
+<!--                                </a>-->
+<!--                            </li>-->
 
                             <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
                                    (click)="logOut()" >
                                     <i class="material-icons opacity-6 me-2 text-md">logout</i>
-                                    Sign out
+                                    Déconnexion
                                 </a>
                             </li>
 
