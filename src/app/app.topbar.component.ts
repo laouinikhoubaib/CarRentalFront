@@ -25,7 +25,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
     notificationList: Array<Notification> = [];
 
     profilPicture!: string;
-
+    allUsers: Array<User> = [];
 
     constructor(public breadcrumbService: BreadcrumbService, public app: AppComponent, public appMain: AppMainComponent,
                 private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
@@ -37,7 +37,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
             this.currentUser.password = "";
             this.currentUser.accessToken = "";
             this.currentUser.email = "";
-            this.currentUser.establishmentDate = new Date();
+            this.currentUser.birthDate = new Date();
             this.currentUser.refreshToken = "";
 
         }
@@ -69,4 +69,21 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
             this.subscription.unsubscribe();
         }
     }
+
+    redirectTo(){
+        this.router.navigate(['/'])
+            .then(() => {
+                window.location.reload();
+            });
+    }
+
+    logOut(){
+        this.authenticationService.logOut();
+        this.router.navigate(['/login'])
+            .then(() => {
+                window.location.reload();
+            });
+    }
+
+
 }

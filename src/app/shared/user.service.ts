@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {User} from '../models/user.model';
+import { switchMap } from 'rxjs/operators';
 
 const API_URL = `${environment.BASE_URL}/api/user/`;
 
@@ -12,10 +13,20 @@ const API_URL = `${environment.BASE_URL}/api/user/`;
   providedIn: 'root'
 })
 export class UserService extends  RequestBaseService{
-
+  private baseUrl = 'http://localhost:8080/SpringMVC';
   constructor(authenticationService: AuthenticationService, http: HttpClient) {
     super(authenticationService, http);
   }
+  getCurrentUser(): Observable<User> {
+    return this.authenticationService.getCurrentUser().pipe(
+        switchMap(user => {
+          const userId = user.userId;
+          const url = `${environment.BASE_URL}/api/user/${userId}`;
+          return this.http.get<User>(url);
+        })
+    );
+  }
+
 
   editProfil(user: User): Observable<any> {
     return this.http.put(API_URL + 'update', user, {headers: this.getHeaders});
@@ -65,4 +76,13 @@ export class UserService extends  RequestBaseService{
   getAllAdmins(): Observable<any>{
     return this.http.get('http://localhost:8080/SpringMVC/api/admin/admins', {headers: this.getHeaders});
   }
+
+  findAdminByNomAgence(nomAgence: string): Observable<any> {
+    return this.http.get(`http://localhost:8080/SpringMVC/api/admin/${nomAgence}`);
+  }
+  getUsersBySameAgence(userId: number): Observable<User[]> {
+    const url = `${this.baseUrl}/api/user/same-agence?userId=${userId}`;
+    return this.http.get<User[]>(url);
+  }
+
 }

@@ -12,7 +12,7 @@ export class User {
     accessToken!: string;
     refreshToken!: string;
     profilPic!: string;
-    establishmentDate!: Date;
+    birthDate!: Date;
     agence?: Agence;
     nomAgence?: string;
 

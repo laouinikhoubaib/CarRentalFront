@@ -1,24 +1,15 @@
 <div class="p-grid">
     <div class="p-col-12">
-
-        <p-toast></p-toast>
-        <!--<div class="row">
-            <div class="col-md-9">1</div>
-            <div class="col-md-3">3</div>
-        </div>-->
-
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
                     <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
-                                   </ng-template>
-
+                </ng-template>
                 <ng-template pTemplate="right">
-
                 </ng-template>
             </p-toolbar>
+            <p-table #dt [value]="listagence" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true">
 
-            <p-table #dt [value]="listagence">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Gestion des agences</h5>
@@ -29,44 +20,37 @@
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
-
                     <tr>
                         <th style="width: 3rem">
-
                         </th>
                         <th pSortableColumn="name">Nom d'agence <p-sortIcon field="name"></p-sortIcon></th>
-
                         <th pSortableColumn="numero">Numéro de téléphone <p-sortIcon field="numero"></p-sortIcon></th>
                         <th pSortableColumn="type">Type d'agence<p-sortIcon field="type"></p-sortIcon></th>
-
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-newAgence  >
-
                     <tr>
                         <td>
-
                         </td>
                         <td><span class="p-column-title"></span>
                             {{newAgence.nom}}
                         </td>
-
                         <td><span class="p-column-title"></span>
                             {{newAgence.numero}}
                         </td>
-
                         <td><span class="p-column-title"></span>
                             {{newAgence.typeagence}}
                         </td>
-
                         <td>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteAgence(newAgence.agenceId.toString())"></button>
-
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteAgence(newAgence.agenceId.toString())"></button>
                         </td>
-
+                        <td>
+                            <button  pButton pRipple icon="pi pi-cog" class="p-button-rounded p-button-warning" (click)="openNew()"></button>
+                        </td>
                     </tr>
-
                 </ng-template>
+
+
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
                         Il y' a eu  {{listagence ? listagence.length : 0 }} Agence.
@@ -75,9 +59,9 @@
             </p-table>
         </div>
 
+
         <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Ajouter une agence" [modal]="true" styleClass="p-fluid">
             <ng-template pTemplate="content">
-
                 <div class="p-field">
                     <label for="nom">Nom d'agence</label>
                     <input type="text" pInputText id="nom" [(ngModel)]="newAgence.nom" required autofocus />
@@ -95,28 +79,12 @@
                         <option value="franchise">franchise</option>
                     </select>
                 </div>
-
-
-
             </ng-template>
-
             <ng-template pTemplate="footer">
-                <button type="button" (click)="addAgence()" class="btn bg-gradient-primary">Ajouter agence</button>
+                <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="addAgence()" class="btn bg-gradient-primary"></button>
             </ng-template>
         </p-dialog>
-
-
-
-
-
-
-
     </div>
-
-
-
-
-
 
 </div>
 

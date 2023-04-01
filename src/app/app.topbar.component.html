@@ -9,7 +9,6 @@
         </ng-template>
         <img id="logo-mobile" class="mobile-logo" [src]="'assets/layout/images/logo-'+ (app.colorScheme === 'light' ? 'dark' : 'white') + '.svg'" alt="diamond-layout" />
     </div>
-
     <div class="topbar-right">
         <ul class="topbar-menu">
             <li class='notifications-item' [ngClass]="{'active-menuitem ': appMain.topbarNotificationMenuActive}">
@@ -70,34 +69,19 @@
                 </a>
                 <ul class="profile-menu fade-in-up">
                     <li>
-                        <a href="#">
-                            <i class="pi pi-user"></i>
+                        <a href="/#/">
+                            <i class="pi pi-user"(click)="redirectTo()"></i>
                             <span>Profile</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="pi pi-cog"></i>
-                            <span>Settings</span>
+
+                    <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                           (click)="logOut()" >
+                            <i class="pi pi-power-off" (click)="logOut()"></i>
+                            <span>Déconnexion</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="pi pi-calendar"></i>
-                            <span>Calendar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="pi pi-inbox"></i>
-                            <span>Inbox</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="pi pi-power-off"></i>
-                            <span>Logout</span>
-                        </a>
+
                     </li>
                 </ul>
             </li>
