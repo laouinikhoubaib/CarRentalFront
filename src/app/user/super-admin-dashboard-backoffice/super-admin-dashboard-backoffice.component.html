@@ -9,7 +9,7 @@
                 <span class="overview-title">Utilisateurs</span>
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
-                        <div class="overview-number">{{userss.length}}</div>
+                        <div class="overview-number">{{allUsers.length}}</div>
                         <div class="overview-subtext">Registered</div>
                     </div>
 
@@ -22,7 +22,7 @@
                 <h4>Escouade administrative</h4>
                 <p>Les administrateurs les plus actifs qui travaillent au sein de notre équipe</p>
                 <ul class="widget-image-list">
-                    <li *ngFor="let admin of admins">
+                    <li *ngFor="let admin of allAdmins">
         <span>
            <img src="assets/img/{{admin.profilPic}}" alt="diamond-layout"/>
           <span>{{admin.username}}</span>
@@ -36,7 +36,7 @@
         <div class="p-grid table-demo">
             <div class="p-col-12">
                 <div class="card">
-                    <p-table #dt [value]="userss" [(selection)]="selectedCustomers1" dataKey="id"
+                    <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
                              styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
                              [filterDelay]="0" [globalFilterFields]="['username', 'email', 'birthDate','locked']">
                         <ng-template pTemplate="caption">
@@ -117,6 +117,9 @@
                                 <td style="text-align: center">
                                     <button *ngIf="!customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="lockUser(customer.username)"></button>
                                     <button *ngIf="customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="unlockUser(customer.username)"></button>
+
+                                    <button *ngIf="customer.role != 'SUPERADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-plus" (click)="makeAdmin(customer.username)"></button>
+                                    <button *ngIf="customer.role === 'SUPERADMIN'" pButton type="button" class="p-button-secondary make-adm" icon="pi pi-user-minus" (click)="unlockUser(customer.username)"></button>
                                 </td>
                             </tr>
                         </ng-template>

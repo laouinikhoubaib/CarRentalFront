@@ -11,10 +11,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register3.component.html',
+  styleUrls: ['./register3.component.scss']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterComponent3 implements OnInit, OnDestroy {
 
   myLinkElement: HTMLLinkElement;
 
@@ -53,9 +53,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   register(){
-    if (this.middleRole == 'USER'){
+    if (this.middleRole == 'USER')
       this.user.role = Role.USER;
-   }
+    else if (this.middleRole == 'USER_FRANCHISE')
+      this.user.role = Role.USER_FRANCHISE;
+    else if (this.middleRole == 'ADMIN')
+      this.user.role = Role.ADMIN;
+    else if (this.middleRole == 'ADMIN_FRANCHISE')
+      this.user.role = Role.ADMIN_FRANCHISE;
+    else if (this.middleRole == 'SUPERADMIN'){
+      this.user.role = Role.SUPERADMIN;
+    }
     this.userParsed = JSON.stringify(this.user);
     console.log(this.userParsed);
 

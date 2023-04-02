@@ -56,8 +56,8 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
             this.userService.getNotifications().subscribe(data => {
                 this.notificationList = data;
             });
-            this.userService.getUserProfilPicture().subscribe(pic => {
-                this.profilPicture = pic.split('\\').pop();
+            this.userService.getUserProfilPicture().subscribe(url => {
+                this.profilPicture = url;
             }, err => {
                 this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
             });
