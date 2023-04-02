@@ -51,27 +51,96 @@ import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import {AgenceComponent} from './agence/agence.component';
 import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
+import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-backoffice/super-admin-dashboard-backoffice.component';
+import {RegisterComponent3} from './user/register3/register3.component';
+import {RegisterComponent2} from './user/register2/register2.component';
 
 
 @NgModule({
         imports: [
             RouterModule.forRoot([
-                {
-                    path: '', component: HomeComponent,
+                {path: '', component: HomeComponent,
                     children: [
                         {path: '', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
                         {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
                         {path: 'addA', component: AddAgenceComponent},
-
                     ]
                 },
-
-                {
-                    path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
                     children: [
-                        {path: 'agence', component: AgenceComponent},
-                        {path: 'addAgence', component: AddAgenceComponent},
+                        {path: '', component: AdminDashboardBackofficeComponent},
+                        {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+                        {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
+                        {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
+                        {path: 'uikit/input', component: InputDemoComponent},
+                        {path: 'uikit/button', component: ButtonDemoComponent},
+                        {path: 'uikit/table', component: TableDemoComponent},
+                        {path: 'uikit/list', component: ListDemoComponent},
+                        {path: 'uikit/tree', component: TreeDemoComponent},
+                        {path: 'uikit/panel', component: PanelsDemoComponent},
+                        {path: 'uikit/overlay', component: OverlaysDemoComponent},
+                        {path: 'uikit/menu', component: MenusDemoComponent},
+                        {path: 'uikit/media', component: MediaDemoComponent},
+                        {path: 'uikit/message', component: MessagesDemoComponent},
+                        {path: 'uikit/misc', component: MiscDemoComponent},
+                        {path: 'uikit/charts', component: ChartsDemoComponent},
+                        {path: 'uikit/file', component: FileDemoComponent},
+                        {path: 'utilities/display', component: DisplayComponent},
+                        {path: 'utilities/elevation', component: ElevationComponent},
+                        {path: 'utilities/flexbox', component: FlexboxComponent},
+                        {path: 'utilities/grid', component: GridComponent},
+                        {path: 'utilities/icons', component: IconsComponent},
+                        {path: 'utilities/widgets', component: WidgetsComponent},
+                        {path: 'utilities/spacing', component: SpacingComponent},
+                        {path: 'utilities/typography', component: TypographyComponent},
+                        {path: 'utilities/text', component: TextComponent},
+                        {path: 'pages/calendar', component: AppCalendarComponent},
+                        {path: 'pages/timeline', component: AppTimelineDemoComponent},
+                        {path: 'pages/invoice', component: AppInvoiceComponent},
+                        {path: 'pages/help', component: AppHelpComponent},
+                        {path: 'pages/empty', component: EmptyDemoComponent},
+                        {path: 'documentation', component: DocumentationComponent},
+                    ]
+                },
+                {path: 'adminfranchise', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN_FRANCHISE]},
+                    children: [
+                        {path: '', component: AdminDashboardBackofficeComponent},
+                        {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+                        {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
+                        {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
+                        {path: 'uikit/input', component: InputDemoComponent},
+                        {path: 'uikit/button', component: ButtonDemoComponent},
+                        {path: 'uikit/table', component: TableDemoComponent},
+                        {path: 'uikit/list', component: ListDemoComponent},
+                        {path: 'uikit/tree', component: TreeDemoComponent},
+                        {path: 'uikit/panel', component: PanelsDemoComponent},
+                        {path: 'uikit/overlay', component: OverlaysDemoComponent},
+                        {path: 'uikit/menu', component: MenusDemoComponent},
+                        {path: 'uikit/media', component: MediaDemoComponent},
+                        {path: 'uikit/message', component: MessagesDemoComponent},
+                        {path: 'uikit/misc', component: MiscDemoComponent},
+                        {path: 'uikit/charts', component: ChartsDemoComponent},
+                        {path: 'uikit/file', component: FileDemoComponent},
+                        {path: 'utilities/display', component: DisplayComponent},
+                        {path: 'utilities/elevation', component: ElevationComponent},
+                        {path: 'utilities/flexbox', component: FlexboxComponent},
+                        {path: 'utilities/grid', component: GridComponent},
+                        {path: 'utilities/icons', component: IconsComponent},
+                        {path: 'utilities/widgets', component: WidgetsComponent},
+                        {path: 'utilities/spacing', component: SpacingComponent},
+                        {path: 'utilities/typography', component: TypographyComponent},
+                        {path: 'utilities/text', component: TextComponent},
+                        {path: 'pages/calendar', component: AppCalendarComponent},
+                        {path: 'pages/timeline', component: AppTimelineDemoComponent},
+                        {path: 'pages/invoice', component: AppInvoiceComponent},
+                        {path: 'pages/help', component: AppHelpComponent},
+                        {path: 'pages/empty', component: EmptyDemoComponent},
+                        {path: 'documentation', component: DocumentationComponent},
+                    ]
+                },
+                {path: 'adminfranchise', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN_FRANCHISE]},
+                    children: [
                         {path: '', component: AdminDashboardBackofficeComponent},
                         {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                         {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
@@ -108,19 +177,59 @@ import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
                     ]
                 },
 
-                {
-                    path: 'user', component: HomeComponent,
+                {path: 'superadmin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.SUPERADMIN]},
+                    children: [
+                        {path: 'agence', component: AgenceComponent},
+                        {path: 'addAgence', component: AddAgenceComponent},
+                        {path: '', component: SAdminDashboardBackofficeComponent},
+                        {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+                        {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
+                        {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
+                        {path: 'uikit/input', component: InputDemoComponent},
+                        {path: 'uikit/button', component: ButtonDemoComponent},
+                        {path: 'uikit/table', component: TableDemoComponent},
+                        {path: 'uikit/list', component: ListDemoComponent},
+                        {path: 'uikit/tree', component: TreeDemoComponent},
+                        {path: 'uikit/panel', component: PanelsDemoComponent},
+                        {path: 'uikit/overlay', component: OverlaysDemoComponent},
+                        {path: 'uikit/menu', component: MenusDemoComponent},
+                        {path: 'uikit/media', component: MediaDemoComponent},
+                        {path: 'uikit/message', component: MessagesDemoComponent},
+                        {path: 'uikit/misc', component: MiscDemoComponent},
+                        {path: 'uikit/charts', component: ChartsDemoComponent},
+                        {path: 'uikit/file', component: FileDemoComponent},
+                        {path: 'utilities/display', component: DisplayComponent},
+                        {path: 'utilities/elevation', component: ElevationComponent},
+                        {path: 'utilities/flexbox', component: FlexboxComponent},
+                        {path: 'utilities/grid', component: GridComponent},
+                        {path: 'utilities/icons', component: IconsComponent},
+                        {path: 'utilities/widgets', component: WidgetsComponent},
+                        {path: 'utilities/spacing', component: SpacingComponent},
+                        {path: 'utilities/typography', component: TypographyComponent},
+                        {path: 'utilities/text', component: TextComponent},
+                        {path: 'pages/calendar', component: AppCalendarComponent},
+                        {path: 'pages/timeline', component: AppTimelineDemoComponent},
+                        {path: 'pages/invoice', component: AppInvoiceComponent},
+                        {path: 'pages/help', component: AppHelpComponent},
+                        {path: 'pages/empty', component: EmptyDemoComponent},
+                        {path: 'documentation', component: DocumentationComponent},
+
+                    ]
+                },
+
+                {path: 'user', component: HomeComponent,
                     children: [
                         {path: 'landing', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent},
                         {path: 'profil/:id', component: UserDetailsComponent},
                                             ]
                 },
-
+                {path: 'register', component: RegisterComponent},
+                {path: 'register2', component: RegisterComponent2},
+                {path: 'register3', component: RegisterComponent3},
                 {path: 'error', component: AppErrorComponent},
                 {path: 'access', component: AppAccessdeniedComponent},
                 {path: 'notfound', component: AppNotfoundComponent},
-                {path: 'register', component: RegisterComponent},
                 {path: 'reset-password', component: ForgotPasswordComponent},
                 {path: 'new-password', component: NewPasswordComponent},
                 {path: 'login', component: LoginComponent},

@@ -154,6 +154,12 @@ import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backof
 import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
 import {UpdateAgenceComponent} from './agence/update-agence/update-agence.component';
 import {AgenceComponent} from './agence/agence.component';
+import {RegisterComponent2} from './user/register2/register2.component';
+import {RegisterComponent3} from './user/register3/register3.component';
+import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-backoffice/super-admin-dashboard-backoffice.component';
+import {
+    FAdminDashboardBackofficeComponent
+} from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
 
 
 
@@ -300,6 +306,8 @@ import {AgenceComponent} from './agence/agence.component';
         AppTimelineDemoComponent,
         AppAccessdeniedComponent,
         RegisterComponent,
+        RegisterComponent2,
+        RegisterComponent3,
         LoginComponent,
         HomeComponent,
         NavbarComponent,
@@ -308,7 +316,9 @@ import {AgenceComponent} from './agence/agence.component';
         ProfilComponent,
         ForgotPasswordComponent,
         NewPasswordComponent,
+        FAdminDashboardBackofficeComponent,
         AdminDashboardBackofficeComponent,
+        SAdminDashboardBackofficeComponent,
 
     ],
     providers: [
