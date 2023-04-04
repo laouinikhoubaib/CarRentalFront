@@ -54,6 +54,9 @@ import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
 import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-backoffice/super-admin-dashboard-backoffice.component';
 import {RegisterComponent3} from './user/register3/register3.component';
 import {RegisterComponent2} from './user/register2/register2.component';
+import {
+    FAdminDashboardBackofficeComponent
+} from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
 
 
 @NgModule({
@@ -105,7 +108,7 @@ import {RegisterComponent2} from './user/register2/register2.component';
                 },
                 {path: 'adminfranchise', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN_FRANCHISE]},
                     children: [
-                        {path: '', component: AdminDashboardBackofficeComponent},
+                        {path: '', component: FAdminDashboardBackofficeComponent},
                         {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                         {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
                         {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},

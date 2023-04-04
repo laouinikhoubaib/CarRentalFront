@@ -43,23 +43,6 @@ export class AdminDashboardBackofficeComponent implements OnInit {
 
     ngOnInit() {
 
-        // this.userService.getAllAdmins().subscribe( allAdmins => {
-        //   this.allAdmins = allAdmins;
-        // });
-        //
-        //   this.userService.getAllUser().subscribe(users => {
-        //   this.allUsers = users;
-        // });
-
-        // this.userService.findAdminByNomAgence('nomAgence').subscribe(data => {
-        //   this.users = data;
-        // });
-        //
-        // this.route.queryParams.subscribe(params => {
-        //   this.userId = params['userId'];
-        //   this.getUsersBySameAgence();
-        // });
-
         this.userService.getCurrentUser().subscribe(
             user => {
                 this.userId = user.userId;
