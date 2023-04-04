@@ -49,7 +49,7 @@ export class UserService extends  RequestBaseService{
   }
 
   getNotifications(): Observable<any> {
-    return this.http.get(API_URL + 'notifications', {headers: this.getHeaders});
+    return this.http.get(API_URL + 'notifications/all', {headers: this.getHeaders});
   }
 
   markNotificationAsRead(notifId: number){

@@ -57,12 +57,12 @@ export class AgenceComponent implements OnInit {
 
   deleteAgence(id: string) {this.service.DeleteAgence(id).subscribe(p => {
       console.log('delete');
-      this.router.navigate(['/admin/agence']);
+      this.router.navigate(['/superadmin/agence']);
     });
   }
   addAgence(){
     this.service.createAgence(this.newAgence).subscribe(comp => {
-      this.router.navigate(['/admin/agence']).then(() => {
+      this.router.navigate(['/superadmin/agence']).then(() => {
         window.location.reload();
       });
 
