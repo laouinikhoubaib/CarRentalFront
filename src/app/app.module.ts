@@ -160,6 +160,7 @@ import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-b
 import {
     FAdminDashboardBackofficeComponent
 } from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
+import { ComplaintComponent } from './complaint/complaint.component';
 
 
 
@@ -319,6 +320,7 @@ import {
         FAdminDashboardBackofficeComponent,
         AdminDashboardBackofficeComponent,
         SAdminDashboardBackofficeComponent,
+        ComplaintComponent,
 
     ],
     providers: [

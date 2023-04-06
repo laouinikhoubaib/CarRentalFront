@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {User} from '../models/user.model';
 import { switchMap } from 'rxjs/operators';
+import {Agence} from '../models/agence';
 
 const API_URL = `${environment.BASE_URL}/api/user/`;
 
@@ -26,7 +27,6 @@ export class UserService extends  RequestBaseService{
         })
     );
   }
-
 
   editProfil(user: User): Observable<any> {
     return this.http.put(API_URL + 'update', user, {headers: this.getHeaders});
@@ -84,5 +84,8 @@ export class UserService extends  RequestBaseService{
     const url = `${this.baseUrl}/api/user/same-agence?userId=${userId}`;
     return this.http.get<User[]>(url);
   }
-
+  getAgenceById(agenceId: number): Observable<Agence> {
+    const url = `${this.baseUrl}/api/user/agence/${agenceId}`;
+    return this.http.get<Agence>(url);
+  }
 }
