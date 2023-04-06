@@ -1,9 +1,9 @@
-
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../models/user.model';
-import {AuthenticationService} from '../../shared/authentication.service';
-import {UserService} from '../../shared/user.service';
-import {Router} from '@angular/router';
+import { User } from '../../models/user.model';
+import { AuthenticationService } from '../../shared/authentication.service';
+import { UserService } from '../../shared/user.service';
+import { Router } from '@angular/router';
+import {Agence} from '../../models/agence';
 
 
 @Component({
@@ -13,9 +13,12 @@ import {Router} from '@angular/router';
 })
 export class ProfilComponent implements OnInit {
 
-  currentUser: User = new User;
+  currentUser: User;
   allUsers: Array<User> = [];
   profilPicture!: string;
+  users: User[];
+  agenceId: number;
+  agence: Agence | null = null;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router ) {
     this.authenticationService.currentUser.subscribe( data => {
@@ -24,6 +27,11 @@ export class ProfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe(user => {
+      this.currentUser = user;
+    });
+    this.agenceId = 1;
+    this.getAgence();
 
     this.userService.getUserProfilPicture().subscribe(xx => {
       this.profilPicture = xx.split('\\').pop();
@@ -35,6 +43,18 @@ export class ProfilComponent implements OnInit {
       this.allUsers = users;
     });
 
+  }
+  getUsersByAgence(): void {
+  }
+
+  getAgence(): void {
+    this.userService.getAgenceById(this.agenceId)
+        .subscribe(agence => {
+          this.agence = agence;
+          if(this.agence != null) {
+            console.log(this.agence.nom);
+          }
+        });
   }
 
   navigateTo(userId: string){
