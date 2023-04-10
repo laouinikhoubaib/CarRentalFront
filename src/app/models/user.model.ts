@@ -1,5 +1,6 @@
 import {Role} from "./role.enum";
 import {Agence} from './agence';
+import {Complaint} from './complaint';
 
 export class User {
     userId!: number;
@@ -15,6 +16,7 @@ export class User {
     birthDate!: Date;
     agence?: Agence;
     nomAgence?: string;
+    complaint: Complaint[];
 
 
 }

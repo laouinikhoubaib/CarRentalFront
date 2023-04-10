@@ -9,6 +9,6 @@ export class Agence{
     numero!: string;
     nom!: string;
     typeagence!: TypeAgence;
-    user: User;
+    user: User[];
 
 }

@@ -3,8 +3,11 @@ import { User } from '../../models/user.model';
 import { AuthenticationService } from '../../shared/authentication.service';
 import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
-import {Agence} from '../../models/agence';
-
+import { ComplaintService } from '../../shared/complaint.service';
+import { Complaint } from '../../models/complaint';
+import { NgForm } from '@angular/forms';
+import { AgenceService } from '../../shared/agence.service';
+import { Agence } from '../../models/agence';
 
 @Component({
   selector: 'app-profil',
@@ -16,54 +19,65 @@ export class ProfilComponent implements OnInit {
   currentUser: User;
   allUsers: Array<User> = [];
   profilPicture!: string;
-  users: User[];
-  agenceId: number;
-  agence: Agence | null = null;
+  agence: Agence;
+  complaint: Complaint = new Complaint();
+  userId: number;
+  nomAgence: string;
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router ) {
-    this.authenticationService.currentUser.subscribe( data => {
+  constructor(
+      private authenticationService: AuthenticationService,
+      private userService: UserService,
+      private router: Router,
+      private complaintService: ComplaintService,
+      private agenceService: AgenceService
+  ) {
+    this.authenticationService.currentUser.subscribe(data => {
       this.currentUser = data;
     });
   }
 
   ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe(user => {
+    this.userService.getCurrentUser().subscribe((user: User) => {
       this.currentUser = user;
-    });
-    this.agenceId = 1;
-    this.getAgence();
+      this.userId = user.userId;
 
-    this.userService.getUserProfilPicture().subscribe(xx => {
-      this.profilPicture = xx.split('\\').pop();
-    }, err => {
-      this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
-    });
-
-    this.userService.getAllUser().subscribe(users => {
-      this.allUsers = users;
-    });
-
-  }
-  getUsersByAgence(): void {
-  }
-
-  getAgence(): void {
-    this.userService.getAgenceById(this.agenceId)
-        .subscribe(agence => {
-          this.agence = agence;
-          if(this.agence != null) {
-            console.log(this.agence.nom);
-          }
+      if (user.agence) {
+        this.nomAgence = user.agence.nom;
+      } else {
+        this.userService.getAgencyNameByUserId(user.userId).subscribe((data: any) => {
+          this.nomAgence = data.nom;
+        }, err => {
+          console.error(err);
+          this.nomAgence = "";
         });
+      }
+
+      this.userService.getUserProfilPicture().subscribe(xx => {
+        this.profilPicture = xx.split('\\').pop();
+      }, err => {
+        this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
+      });
+
+      this.userService.getAllUser().subscribe((users: User[]) => {
+        this.allUsers = users;
+      });
+    });
   }
 
-  navigateTo(userId: string){
-    const url = `user/profil/${userId}`;
-    console.log(url);
-    this.router.navigate([url])
+  redirectTo(){
+    this.router.navigate(['/'])
         .then(() => {
           window.location.reload();
         });
   }
 
+  addComplaint() {
+    this.complaintService.addComplaint(this.complaint, this.userId).subscribe(
+        complaint => {
+        },
+        error => {
+          console.error(error);
+        }
+    );
+  }
 }

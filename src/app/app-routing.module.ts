@@ -50,13 +50,14 @@ import {Role} from './models/role.enum';
 import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import {AgenceComponent} from './agence/agence.component';
-import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
 import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-backoffice/super-admin-dashboard-backoffice.component';
 import {RegisterComponent3} from './user/register3/register3.component';
 import {RegisterComponent2} from './user/register2/register2.component';
 import {
     FAdminDashboardBackofficeComponent
 } from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
+import {Complaint} from './models/complaint';
+import {ComplaintComponent} from './complaint/complaint.component';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import {
                         {path: '', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
                         {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
-                        {path: 'addA', component: AddAgenceComponent},
+
                     ]
                 },
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
@@ -183,7 +184,7 @@ import {
                 {path: 'superadmin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.SUPERADMIN]},
                     children: [
                         {path: 'agence', component: AgenceComponent},
-                        {path: 'addAgence', component: AddAgenceComponent},
+                        {path: 'complaint', component: ComplaintComponent},
                         {path: '', component: SAdminDashboardBackofficeComponent},
                         {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                         {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
