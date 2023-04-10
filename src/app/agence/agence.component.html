@@ -8,15 +8,18 @@
                 <ng-template pTemplate="right">
                 </ng-template>
             </p-toolbar>
-            <p-table #dt [value]="listagence" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true">
+            <p-table #dt [value]="listagence" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     [filterDelay]="0" [globalFilterFields]="['nom', 'numero', 'typeagence']">>
 
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Gestion des agences</h5>
                         <span class="p-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-                    </span>
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -60,31 +63,5 @@
         </div>
 
 
-        <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Ajouter une agence" [modal]="true" styleClass="p-fluid">
-            <ng-template pTemplate="content">
-                <div class="p-field">
-                    <label for="nom">Nom d'agence</label>
-                    <input type="text" pInputText id="nom" [(ngModel)]="newAgence.nom" required autofocus />
-                    <small class="p-invalid" *ngIf="submitted && !newAgence.nom">Nom d'agence manqauant</small>
-                </div>
-                <div class="p-field">
-                    <label for="nom">Numéro de téléphone</label>
-                    <input type="text" pInputText id="address" [(ngModel)]="newAgence.numero" required autofocus />
-                    <small class="p-invalid" *ngIf="submitted && !agence1.numero">Numéro de téléphone manqauant</small>
-                </div>
-                <div class="p-field">
-                    <label class="form-label">Type d'agence</label>
-                    <select class="form-control" name="name" [(ngModel)]="newAgence.typeagence"  #name="ngModel" id="choice-button" placeholder="Language" required>
-                        <option value="normale" selected>normale</option>
-                        <option value="franchise">franchise</option>
-                    </select>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="footer">
-                <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="addAgence()" class="btn bg-gradient-primary"></button>
-            </ng-template>
-        </p-dialog>
-    </div>
-
-</div>
+       c
 

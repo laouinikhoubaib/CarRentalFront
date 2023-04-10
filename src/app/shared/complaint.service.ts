@@ -1,41 +1,59 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {RequestBaseService} from './request-base.service';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Complaint } from '../models/complaint';
+import {Agence} from '../models/agence';
 import {AuthenticationService} from './authentication.service';
-import {Complaint} from '../models/complaint';
+import {RequestBaseService} from './request-base.service';
 
-const httpOptions = {
-  headers: new HttpHeaders( {'Content-Type': 'application/json'} )
-};
 @Injectable({
   providedIn: 'root'
 })
 export class ComplaintService extends  RequestBaseService{
-
-  private baseUrl = 'http://localhost:8080/api/complaint';
-
-  constructor( http: HttpClient, authenticationService: AuthenticationService) {
+  private baseUrl = 'http://localhost:8080/SpringMVC/api/complaint';
+  coursesUrl = 'http://localhost:8080/SpringMVC/api/complaint/retrieveAllComplaints';
+  constructor(authenticationService: AuthenticationService, http: HttpClient) {
     super(authenticationService, http);
   }
 
-  addComplaint(complaint: Complaint, userId: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/AddComplaint/${userId}`, complaint);
+  getComplaintById(complaintId: string): Observable<Complaint> {
+    return this.http.get<Complaint>(`/api/complaints/${complaintId}`);
+  }
+  addComplaint(complaint: Complaint, userId: number): Observable<Complaint> {
+    const url = `${this.baseUrl}/AddComplaint/${userId}`;
+    return this.http.post<Complaint>(url, complaint).pipe(
+        catchError(this.handleError)
+    );
   }
 
-  deleteComplaint(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/deleteComplaint/${id}`, { responseType: 'text' });
+  deleteComplaint(complaintId: string): Observable<any> {
+    return this.http.delete<Complaint>('http://localhost:8080/SpringMVC/api/complaint/deleteComplaint/' + complaintId , {headers: this.getHeaders});
   }
 
-  updateComplaint(id: number, complaint: Complaint): Observable<any> {
-    return this.http.put(`${this.baseUrl}/updateCompalaint/${id}`, complaint);
+  retrieveAllComplaints(): Observable<Complaint[]> {
+    return this.http.get<Complaint[]>(this.coursesUrl);
   }
 
-  getAllComplaints(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/retrieveAllComplaints`);
+
+  updateComplaint(complaintId: string): Observable<any> {
+    const url = `${this.baseUrl}/updateUntreatedComplaint/${complaintId}`;
+    return this.http.put(url, {});
   }
 
-  treatComplaint(id: number, complaint: Complaint, userId: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}/traiter/${id}?userId=${userId}`, complaint);
+  getComplaintsByType(type: string): Observable<Complaint[]> {
+    const url = `${this.baseUrl}/type/${type}`;
+    return this.http.get<Complaint[]>(url);
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }

@@ -56,8 +56,8 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
             this.userService.getNotifications().subscribe(data => {
                 this.notificationList = data;
             });
-            this.userService.getUserProfilPicture().subscribe(url => {
-                this.profilPicture = url;
+            this.userService.getUserProfilPicture().subscribe(pic => {
+                this.profilPicture = pic.split('\\').pop();
             }, err => {
                 this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
             });
@@ -71,7 +71,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
     }
 
     redirectTo(){
-        this.router.navigate(['/'])
+        this.router.navigate(['/profil'])
             .then(() => {
                 window.location.reload();
             });

@@ -41,7 +41,7 @@ export class AgenceComponent implements OnInit {
   submitted: boolean;
   private routeSub: Subscription;
   newAgence = new Agence();
-  constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute,) {}
+  constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute) {}
 
 
   ngOnInit(): void {

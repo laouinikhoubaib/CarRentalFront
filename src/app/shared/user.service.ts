@@ -20,7 +20,7 @@ export class UserService extends  RequestBaseService{
   }
   getCurrentUser(): Observable<User> {
     return this.authenticationService.getCurrentUser().pipe(
-        switchMap(user => {
+        switchMap((user: User) => {
           const userId = user.userId;
           const url = `${environment.BASE_URL}/api/user/${userId}`;
           return this.http.get<User>(url);
@@ -84,8 +84,13 @@ export class UserService extends  RequestBaseService{
     const url = `${this.baseUrl}/api/user/same-agence?userId=${userId}`;
     return this.http.get<User[]>(url);
   }
-  getAgenceById(agenceId: number): Observable<Agence> {
-    const url = `${this.baseUrl}/api/user/agence/${agenceId}`;
-    return this.http.get<Agence>(url);
+
+  getUsersByAgence(agenceId: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/agence/${agenceId}`);
+  }
+
+  getAgencyNameByUserId(userId: number): Observable<string> {
+    const url = `${this.baseUrl}/api/user/${userId}/agencyName`;
+    return this.http.get<string>(url);
   }
 }

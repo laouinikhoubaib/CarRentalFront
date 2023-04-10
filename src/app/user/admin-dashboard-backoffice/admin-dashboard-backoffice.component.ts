@@ -20,11 +20,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AdminDashboardBackofficeComponent implements OnInit {
 
 
-  // allAdmins: Array<User> = [];
   lineData: any;
-  // allUsers: Array<User> = [];
   selectedCustomers1: any;
-  // users: any[];
   userId: number;
 
 
@@ -46,8 +43,6 @@ export class AdminDashboardBackofficeComponent implements OnInit {
         this.userService.getCurrentUser().subscribe(
             user => {
                 this.userId = user.userId;
-
-                // Obtenir tous les utilisateurs de la même agence
                 this.userService.getUsersBySameAgence(this.userId).subscribe(
                     userss => {
                         this.userss = userss;
@@ -56,24 +51,11 @@ export class AdminDashboardBackofficeComponent implements OnInit {
                         console.log(error);
                     }
                 );
-
-                // Obtenir tous les admins de la même agence triés par agence
                 this.userService.getUsersBySameAgence(this.userId).subscribe(users => {
-                    // Filtrer les administrateurs seulement
                     this.admins = users.filter(user => user.role === 'ADMIN');
                 });
             });
     }
-
-
-
-
-
-
-
-
-
-
   unlockUser(username: string){
     this.userService.unlockUser(username).subscribe();
     let currentUrl = this.router.url;
@@ -84,14 +66,6 @@ export class AdminDashboardBackofficeComponent implements OnInit {
 
   lockUser(username: string){
     this.userService.lockUser(username).subscribe();
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
-  }
-
-  makeAdmin(username: string){
-    this.userService.makeAdmin(username).subscribe();
     let currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';

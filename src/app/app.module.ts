@@ -3,7 +3,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {CommonModule, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
@@ -149,10 +149,7 @@ import { FrontLandingComponent } from './user/front-landing/front-landing.compon
 import { ProfilComponent } from './user/profil/profil.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './user/new-password/new-password.component';
-import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
-import {AddAgenceComponent} from './agence/add-agence/add-agence.component';
-import {UpdateAgenceComponent} from './agence/update-agence/update-agence.component';
 import {AgenceComponent} from './agence/agence.component';
 import {RegisterComponent2} from './user/register2/register2.component';
 import {RegisterComponent3} from './user/register3/register3.component';
@@ -253,6 +250,9 @@ import { ComplaintComponent } from './complaint/complaint.component';
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
+        CommonModule,
+        FormsModule,
+
 
 
     ],
@@ -260,8 +260,6 @@ import { ComplaintComponent } from './complaint/complaint.component';
         AppComponent,
         AppMainComponent,
         AgenceComponent,
-        AddAgenceComponent,
-        UpdateAgenceComponent,
         AppRightmenuComponent,
         AppMenuComponent,
         AppMenuitemComponent,

@@ -101,4 +101,9 @@ export class AuthenticationService {
   public getCurrentUser(): Observable<User> {
     return this.currentUser;
   }
+  getCurrentUserId(): number {
+    const currentUser = this.currentUserValue;
+    const decodedToken = this.helper.decodeToken(currentUser.accessToken);
+    return decodedToken.id;
+  }
 }
