@@ -4,28 +4,27 @@
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="right">
                 </ng-template>
-<!--                <h2>Complaints by Type</h2>-->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Les Réclamations par Status </h5>
+                        <canvas #pieChart></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Les Réclamations par type </h5>
+                    <canvas #pieChartt></canvas>
+                </div>
+                </div>
 
-<!--                <mat-form-field>-->
-<!--                    <mat-label>Select Type</mat-label>-->
-<!--                    <mat-select [(value)]="selectedType" (selectionChange)="getComplaintsByType()">-->
-<!--                        <mat-option *ngFor="let type of complaintsByType" [value]="type">-->
-<!--                            {{ type }}-->
-<!--                        </mat-option>-->
-<!--                    </mat-select>-->
-<!--                </mat-form-field>-->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Evolution des Réclamations par mois</h5>
+                            <canvas #complaintsChart></canvas>
+                    </div>
+                </div>
 
-<!--                <mat-accordion *ngIf="complaintsByType && complaintsByType.length > 0">-->
-<!--                    <mat-expansion-panel *ngFor="let complaint of complaintsByType">-->
-<!--                        <mat-expansion-panel-header>-->
-<!--                            <mat-panel-title>{{ complaint.complaintStatus }}</mat-panel-title>-->
-<!--                            <mat-panel-description>{{ complaint.complaintType }}</mat-panel-description>-->
-<!--                        </mat-expansion-panel-header>-->
-<!--                        <p>{{ complaint.description }}</p>-->
-<!--                    </mat-expansion-panel>-->
-<!--                </mat-accordion>-->
 
-<!--                <p *ngIf="!complaintsByType || complaintsByType.length === 0">No complaints found for selected type.</p>-->
             </p-toolbar>
             <p-table #dt [value]="complaints" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
                      styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
@@ -39,17 +38,15 @@
                            placeholder="Global Search"/>
                 </span>
                     </div>
-
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="width: 3rem">
+                        <th style="width: 4rem">
                         </th>
-                        <th pSortableColumn="complaintDate">Date Réclamation <p-sortIcon field="name"></p-sortIcon></th>
-                        <th pSortableColumn="complaintType">Type <p-sortIcon field="type"></p-sortIcon></th>
-                        <th pSortableColumn="complaintStatus">Status <p-sortIcon field="type"></p-sortIcon></th>
-                        <th pSortableColumn="description">Objet<p-sortIcon field="numero"></p-sortIcon></th>
-
+                        <th pSortableColumn="complaintDate">Date Réclamation <p-sortIcon field="complaintDate"></p-sortIcon></th>
+                        <th pSortableColumn="complaintType">Type <p-sortIcon field="complaintType"></p-sortIcon></th>
+                        <th pSortableColumn="complaintStatus">Status <p-sortIcon field="complaintStatus"></p-sortIcon></th>
+                        <th pSortableColumn="description">Objet<p-sortIcon field="description"></p-sortIcon></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-complaint  >
@@ -63,7 +60,7 @@
                             {{complaint.complaintType}}
                         </td>
                         <td><span class="p-column-title"></span>
-                            {{complaint.complaintStatus}}
+                            {{complaint.complaint_status}}
                         </td>
                         <td><span class="p-column-title"></span>
                             {{complaint.description}}
@@ -78,7 +75,6 @@
                                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteComplaint(complaint.complaintId.toString())"></button>
                             </div>
                         </td>
-
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">

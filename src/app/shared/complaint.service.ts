@@ -41,9 +41,16 @@ export class ComplaintService extends  RequestBaseService{
     return this.http.put(url, {});
   }
 
-  getComplaintsByType(type: string): Observable<Complaint[]> {
-    const url = `${this.baseUrl}/type/${type}`;
-    return this.http.get<Complaint[]>(url);
+  getComplaintStats(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/stats`);
+  }
+
+  getComplaintsByType(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/count-by-type`);
+  }
+
+  getComplaintsCountByDate(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.baseUrl}/complaints-count`);
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
