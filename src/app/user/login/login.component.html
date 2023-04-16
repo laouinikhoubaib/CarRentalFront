@@ -1,23 +1,12 @@
 <section>
-    <div class="page-header min-vh-100">
-        <div class="container">
+    <div class="page-header min-vh-100 bg-diamond-blue" >
+        <div class="container-fluid" >
             <div class="row">
-                <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                    <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../../assets/img/illustrations/illustration-signin.jpg'); " loading="lazy"></div>
-                </div>background-size: cover;
-                <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-                    <div class="card card-plain">
-                        <div class="card-header text-center">
-                            <h4 class="font-weight-bolder">Connectez-vous</h4>
-                            <p class="mb-0">Entrez votre adresse  et votre mot de passe</p>
-
-
-
-
-                        </div>
-
-                        <div class="card-body mt-2">
-                            <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && login()">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="col-lg-6 col-md-12 " style="backdrop-filter: blur(30px);" >
+                        <div class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form">
+                            <h2 class="text-center mb-4 animate__animated animate__fadeInDown" style="color: white;">Connectez-vous</h2>
+                            <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && login()" class="animate__animated animate__fadeInLeft">
                                 <div class="row">
                                     <div class="alert alert-danger alert-dismissible text-white fade show" role="alert" *ngIf="errorMessage">
                                         <strong>{{errorMessage}}</strong>
@@ -27,29 +16,23 @@
                                     </div>
                                 </div>
                                 <div class="input-group input-group-outline mb-3">
-                                    <label class="form-label" for="username">Username</label>
-                                    <input id="username" name="username" type="text" class="form-control" [(ngModel)]="user.username" #username="ngModel" required>
+                                    <label class="form-label" style="color: white;">Nom d'utilisateur</label>
+                                    <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required style="color: white;">
                                 </div>
-                                <div class="input-group input-group-outline mb-3" for="password">
-                                    <label class="form-label">Mot de passe</label>
-                                    <input id="password" name="password" type="password" class="form-control" [(ngModel)]="user.password" #password="ngModel" required>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label" style="color: white;">Mot de passe</label>
+                                    <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required style="color: white;" >
                                 </div>
-                                <div class="form-check form-switch d-flex align-items-center mb-3">
+                                <div class="form-check mb-4 animate__animated animate__fadeInUp">
                                     <input class="form-check-input" type="checkbox" id="rememberMe">
-                                    <label class="form-check-label mb-0 ms-3" for="rememberMe">Se souvenir de moi
-
-                                    </label>
+                                    <label class="form-label" style="color: white;">Se souvenir de moi</label>
                                 </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Connexion</button>
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp">Connexion</button>
+                                <div class="text-center animate__animated animate__fadeInUp">
+                                    <p class="form-label" style="color: white;">Vous ne pouvez pas vous connecter ?</p>
+                                    <a href="#" class="text-primary">Mot de passe oublié ?</a>
                                 </div>
                             </form>
-                        </div>
-                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                            <p class="mb-4 text-sm mx-auto">
-                                Vous ne pouvez pas connecter ?
-                                <a href="javascript:;" class="text-primary text-gradient font-weight-bold" routerLink="/reset-password">Mot de passe oublié !</a>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -57,6 +40,3 @@
         </div>
     </div>
 </section>
-
-
-
