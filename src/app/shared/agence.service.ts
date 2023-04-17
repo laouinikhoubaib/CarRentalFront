@@ -12,6 +12,7 @@ import {User} from '../models/user.model';
 
 export class AgenceService  extends  RequestBaseService {
   coursesUrl = 'http://localhost:8080/SpringMVC/api/agence/all';
+  apiUrl = 'http://localhost:8080/SpringMVC/api/agence';
 
   constructor(authenticationService: AuthenticationService, http: HttpClient) {
     super(authenticationService, http);
@@ -49,5 +50,7 @@ export class AgenceService  extends  RequestBaseService {
   getUsersBySameAgence(userId: string): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:8080/SpringMVC/api/agence/same-agence' + userId);
   }
-
+  getCountByTypeAgence(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/countByType`);
+  }
 }
