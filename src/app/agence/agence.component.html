@@ -2,6 +2,20 @@
     <div class="p-col-12">
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="right">
+                </ng-template>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Agences par type</h5>
+                            <canvas #pieChart></canvas>
+                    </div>
+                </div>
+
+
+            </p-toolbar>
+            <p-toolbar styleClass="p-mb-4">
+
                 <ng-template pTemplate="left">
                     <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
                 </ng-template>

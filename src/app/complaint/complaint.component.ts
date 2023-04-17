@@ -34,7 +34,9 @@ export class ComplaintComponent implements OnInit {
 
     @ViewChild('pieChart') pieChart: ElementRef;
     @ViewChild('pieChartt') pieChartt: ElementRef;
+    @ViewChild('lineChart') lineChart: ElementRef;
 
+    chartt: Chart;
     chart: any;
     complaints: Complaint[];
     userId: number;
@@ -51,9 +53,43 @@ export class ComplaintComponent implements OnInit {
         });
         this.getComplaintStats();
         this.getComplaintsByType();
-
+        this.complaintService.getComplaintsByDayInMonth().subscribe(
+            data => {
+                const labels = Object.keys(data);
+                const values = Object.values(data);
+                this.chartt = new Chart(this.lineChart.nativeElement, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Complaints by Day',
+                            data: values,
+                            borderColor: '#3cba9f',
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true
+                            }],
+                            yAxes: [{
+                                display: true
+                            }]
+                        }
+                    }
+                });
+            },
+            error => {
+                console.log('Error fetching statistics', error);
+            }
+        );
     }
 
+    
     deleteComplaint(id: string) {this.complaintService.deleteComplaint(id).subscribe(p => {
         console.log('delete');
         this.router.navigate(['/superadmin/complaint']);
