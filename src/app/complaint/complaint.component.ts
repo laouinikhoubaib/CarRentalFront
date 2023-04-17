@@ -4,8 +4,8 @@ import { ComplaintService } from '../shared/complaint.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {Subscription} from 'rxjs/dist/types';
-import * as Chart from 'chart.js';
-import * as Highcharts from 'highcharts';
+import { Chart } from 'chart.js';
+
 
 @Component({
     selector: 'app-complaint',
@@ -34,10 +34,7 @@ export class ComplaintComponent implements OnInit {
 
     @ViewChild('pieChart') pieChart: ElementRef;
     @ViewChild('pieChartt') pieChartt: ElementRef;
-    @ViewChild('complaintsChart') private complaintsChartRef!: ElementRef;
 
-
-    private complaintsChart: Chart | null = null;
     chart: any;
     complaints: Complaint[];
     userId: number;
@@ -54,44 +51,8 @@ export class ComplaintComponent implements OnInit {
         });
         this.getComplaintStats();
         this.getComplaintsByType();
-        this.complaintService.getComplaintsCountByDate().subscribe(complaintsCount => {
-            const labels = [];
-            const data = [];
-            for (let i = 1; i <= 30; i++) {
-                labels.push(i);
-                data.push(complaintsCount[i - 1]);
-            }
-            const ctx = this.complaintsChartRef.nativeElement.getContext('2d');
-            this.complaintsChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Complaints',
-                        data: data,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
+
     }
-
-    ngOnDestroy(): void {
-        if (this.complaintsChart) {
-            this.complaintsChart.destroy();
-        }
-    }
-
-
 
     deleteComplaint(id: string) {this.complaintService.deleteComplaint(id).subscribe(p => {
         console.log('delete');

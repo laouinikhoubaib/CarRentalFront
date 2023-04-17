@@ -51,6 +51,10 @@ export class UserService extends  RequestBaseService{
   getNotifications(): Observable<any> {
     return this.http.get(API_URL + 'notifications/all', {headers: this.getHeaders});
   }
+  deleteNotification(notificationId: number): Observable<any> {
+    const url = `${this.baseUrl}/api/user/notification/delete/${notificationId}`;
+    return this.http.delete(url);
+  }
 
   markNotificationAsRead(notifId: number){
     return this.http.put(API_URL + 'notification/read', notifId, {headers: this.getHeaders});
