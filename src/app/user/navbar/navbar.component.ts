@@ -13,6 +13,7 @@ import {UserService} from '../../shared/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  notificationId: number = 123;
   currentUser: User = new User;
   notificationList: Array<Notification> = [];
   profilPicture!: string;
@@ -90,6 +91,16 @@ export class NavbarComponent implements OnInit {
         });
   }
 
-
+  onDeleteNotification(notificationId: number): void {
+    this.userService.deleteNotification(notificationId).subscribe(
+        response => {
+          console.log('Notification supprimée avec succès');
+        },
+        error => {
+          console.log('Erreur lors de la suppression de la notification', error);
+        }
+    );
+    window.location.reload();
+  }
 
 }

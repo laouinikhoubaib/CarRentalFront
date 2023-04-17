@@ -49,10 +49,10 @@ export class ComplaintService extends  RequestBaseService{
     return this.http.get<any>(`${this.baseUrl}/count-by-type`);
   }
 
-  getComplaintsCountByDate(): Observable<number[]> {
-    return this.http.get<number[]>(`${this.baseUrl}/complaints-count`);
+  getComplaintsByDayInMonth() {
+    const url = `${this.baseUrl}/stats`;
+    return this.http.get(url);
   }
-
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

@@ -79,5 +79,6 @@ export class ProfilComponent implements OnInit {
           console.error(error);
         }
     );
+    window.location.reload();
   }
 }
