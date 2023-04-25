@@ -8,6 +8,12 @@ export class Agence{
     agenceId!: number;
     numero!: string;
     nom!: string;
+    email!: string;
+    adresse!: string;
+    dateouverture!: Date;
+    datefermeture!: Date;
+    jourtravail!: string;
+    description!: string;
     typeagence!: TypeAgence;
     user: User[];
 
