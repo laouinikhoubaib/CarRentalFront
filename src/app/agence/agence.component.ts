@@ -138,10 +138,6 @@ export class AgenceComponent implements OnInit {
     this.eventDialog = true;
   }
 
-  openNeww() {
-    this.listagence = [];
-    this.submitted = false;
-    this.eventDialogg = true;
-  }
+
 
 }
