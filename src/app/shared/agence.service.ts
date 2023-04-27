@@ -53,4 +53,12 @@ export class AgenceService  extends  RequestBaseService {
   getCountByTypeAgence(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/countByType`);
   }
+
+  blockAgence(nom: string){
+    return this.http.put('http://localhost:8080/SpringMVC/api/agence/block', nom, {headers: this.getHeaders});
+  }
+
+  deblockAgence(nom: string){
+    return this.http.put('http://localhost:8080/SpringMVC/api/agence/deblock', nom, {headers: this.getHeaders});
+  }
 }
