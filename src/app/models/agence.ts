@@ -15,6 +15,7 @@ export class Agence{
     jourtravail!: string;
     description!: string;
     typeagence!: TypeAgence;
+    locked: boolean = false;
     user: User[];
 
 }
