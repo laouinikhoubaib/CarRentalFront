@@ -112,7 +112,6 @@ export class AgenceComponent implements OnInit {
 
     });
 
-
   }
   loadAgence() {
     this.service.getAgence(this.agenceId).subscribe(agence => {
@@ -120,6 +119,21 @@ export class AgenceComponent implements OnInit {
     });
   }
 
+  blockAgence(nom: string){
+    this.service.blockAgence(nom).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
+
+  deblockAgence(nom: string){
+    this.service.deblockAgence(nom).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
   updateAgence() {
     this.service.updateAgence(this.agenceId, this.agence).subscribe(agence => {
       this.agence = agence;
