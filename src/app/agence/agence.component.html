@@ -46,7 +46,13 @@
                         <th pSortableColumn="jourtravail">Jours de travail<p-sortIcon field="jourtravail"></p-sortIcon></th>
                         <th pSortableColumn="description">Détails<p-sortIcon field="description"></p-sortIcon></th>
                         <th pSortableColumn="type">Type d'agence<p-sortIcon field="type"></p-sortIcon></th>
-
+                        <th pSortableColumn="locked">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Status
+                                <p-sortIcon field="locked"></p-sortIcon>
+                                <p-columnFilter type="text" field="locked" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-newAgence  >
@@ -79,6 +85,14 @@
                         </td>
                         <td><span class="p-column-title"></span>
                             {{newAgence.typeagence}}
+                        </td>
+                        <td>
+                            <span *ngIf="newAgence.locked" [class]="'customer-badge status-unqualified'">Bloqué</span>
+                            <span *ngIf="!newAgence.locked" [class]="'customer-badge status-proposal'">Active</span>
+                        </td>
+                        <td style="text-align: center">
+                            <button *ngIf="!newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="blockAgence(newAgence.username)"></button>
+                            <button *ngIf="newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="deblockAgence(newAgence.username)"></button>
                         </td>
                         <td>
                             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteAgence(newAgence.agenceId.toString())"></button>

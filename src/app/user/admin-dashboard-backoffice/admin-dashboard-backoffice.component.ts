@@ -30,14 +30,11 @@ export class AdminDashboardBackofficeComponent implements OnInit {
     admins: Array<User> = [];
 
 
-    constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService, private userService: UserService, private customerService: CustomerService, private router: Router, private route: ActivatedRoute) {
+    constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService, private userService: UserService, private router: Router, private route: ActivatedRoute) {
     this.breadcrumbService.setItems([
       {label: 'Dashboard', routerLink: ['/']}
     ]);
-
-
   }
-
     ngOnInit() {
 
         this.userService.getCurrentUser().subscribe(
