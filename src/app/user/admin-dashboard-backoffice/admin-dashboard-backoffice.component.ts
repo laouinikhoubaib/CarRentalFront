@@ -26,8 +26,8 @@ export class AdminDashboardBackofficeComponent implements OnInit {
 
 
   userss: Array<User> = [];
-    nomAgence: string;
-    admins: Array<User> = [];
+  nomAgence: string;
+  admins: Array<User> = [];
 
 
     constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService, private userService: UserService, private router: Router, private route: ActivatedRoute) {
