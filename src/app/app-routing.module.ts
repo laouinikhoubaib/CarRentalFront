@@ -58,6 +58,7 @@ import {
 } from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
 import {Complaint} from './models/complaint';
 import {ComplaintComponent} from './complaint/complaint.component';
+import {ChatboxComponent} from './chatbox/chatbox.component';
 
 
 @NgModule({
@@ -226,7 +227,9 @@ import {ComplaintComponent} from './complaint/complaint.component';
                         {path: 'landing', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent},
                         {path: 'profil/:id', component: UserDetailsComponent},
-                                            ]
+                        {path: 'chat', component: ChatboxComponent}
+
+                    ]
                 },
                 {path: 'register', component: RegisterComponent},
                 {path: 'register2', component: RegisterComponent2},
