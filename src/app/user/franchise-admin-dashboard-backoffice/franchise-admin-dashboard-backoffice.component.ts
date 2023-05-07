@@ -27,7 +27,7 @@ export class FAdminDashboardBackofficeComponent implements OnInit {
   // users: any[];
   userId: number;
 
-
+    currentUser: User;
   userss: Array<User> = [];
     nomAgence: string;
     admins: Array<User> = [];
@@ -42,7 +42,21 @@ export class FAdminDashboardBackofficeComponent implements OnInit {
   }
 
     ngOnInit() {
+        this.userService.getCurrentUser().subscribe((user: User) => {
+            this.currentUser = user;
+            this.userId = user.userId;
 
+            if (user.agence) {
+                this.nomAgence = user.agence.nom;
+            } else {
+                this.userService.getAgencyNameByUserId(user.userId).subscribe((data: any) => {
+                    this.nomAgence = data.nom;
+                }, err => {
+                    console.error(err);
+                    this.nomAgence = "";
+                });
+            }
+        });
 
         this.userService.getCurrentUser().subscribe(
             user => {

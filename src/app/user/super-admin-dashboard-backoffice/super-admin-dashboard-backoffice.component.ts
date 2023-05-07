@@ -10,6 +10,8 @@ import {Table} from 'primeng/table';
 import {CustomerService} from '../../demo/service/customerservice';
 import {User} from '../../models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Agence} from '../../models/agence';
+import {AgenceService} from '../../shared/agence.service';
 
 
 @Component({
@@ -26,31 +28,32 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
   selectedCustomers1: any;
   users: any[];
   userId: number;
-
-
-    userss: Array<User> = [];
-    nomAgence: string;
-    admins: Array<User> = [];
-
+  currentUser: User;
+  agence: Agence;
+  userss: Array<User> = [];
+  nomAgence: string;
+  admins: Array<User> = [];
+  agenceId: number;
 
     constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService, private userService: UserService, private customerService: CustomerService, private router: Router, private route: ActivatedRoute) {
     this.breadcrumbService.setItems([
       {label: 'Dashboard', routerLink: ['/']}
     ]);
-
-
   }
 
     ngOnInit() {
+      this.userService.getAllAdmins().subscribe(allAdmins => {
+        this.allAdmins = allAdmins;
+      });
 
-        this.userService.getAllAdmins().subscribe( allAdmins => {
-          this.allAdmins = allAdmins;
-        });
+      this.userService.getAllUser().subscribe(users => {
+        this.allUsers = users;
+      });
 
-          this.userService.getAllUser().subscribe(users => {
-          this.allUsers = users;
-        });
+      this.userId = +this.route.snapshot.paramMap.get('userId');
+      this.getNomAgence();
     }
+
   unlockUser(username: string){
     this.userService.unlockUser(username).subscribe();
     let currentUrl = this.router.url;
@@ -80,4 +83,9 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
           window.location.reload();
         });
   }
+  getNomAgence(): void {
+    this.userService.getNomAgence(this.userId)
+        .subscribe(nomAgence => this.nomAgence = nomAgence);
+  }
+
 }

@@ -9,6 +9,7 @@ import {User} from './models/user.model';
 import {AuthenticationService} from './shared/authentication.service';
 import {UserService} from './shared/user.service';
 import {Router} from '@angular/router';
+import {AgenceService} from './shared/agence.service';
 
 @Component({
     selector: 'app-topbar',
@@ -28,7 +29,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
     allUsers: Array<User> = [];
 
     constructor(public breadcrumbService: BreadcrumbService, public app: AppComponent, public appMain: AppMainComponent,
-                private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
+                private authenticationService: AuthenticationService, private userService: UserService, private router: Router, private agenceService: AgenceService) {
 
         if (this.currentUser == null){
             this.currentUser = new User();
