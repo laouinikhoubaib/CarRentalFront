@@ -87,15 +87,12 @@
                             {{newAgence.typeagence}}
                         </td>
                         <td>
-                            <span *ngIf="newAgence.locked" [class]="'customer-badge status-unqualified'">Bloqué</span>
+                            <span *ngIf="newAgence.locked" [class]="'customer-badge status-unqualified'">Bloquée</span>
                             <span *ngIf="!newAgence.locked" [class]="'customer-badge status-proposal'">Active</span>
                         </td>
                         <td style="text-align: center">
-                            <button *ngIf="!newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="blockAgence(newAgence.username)"></button>
-                            <button *ngIf="newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="deblockAgence(newAgence.username)"></button>
-                        </td>
-                        <td>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteAgence(newAgence.agenceId.toString())"></button>
+                            <button *ngIf="!newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="blockAgence(newAgence.nom)"></button>
+                            <button *ngIf="newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="deblockAgence(newAgence.nom)"></button>
                         </td>
 
                     </tr>

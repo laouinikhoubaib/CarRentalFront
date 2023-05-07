@@ -10,7 +10,9 @@
                 <div class="p-grid overview-detail">
                     <div class="p-col-6">
                         <div class="overview-number">{{allUsers.length}}</div>
-                        <div class="overview-subtext">Registered</div>
+                        <div class="overview-subtext">Enregistrés
+
+                        </div>
                     </div>
 
                     </div>
@@ -38,7 +40,7 @@
                 <div class="card">
                     <p-table #dt [value]="allUsers" [(selection)]="selectedCustomers1" dataKey="id"
                              styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
-                             [filterDelay]="0" [globalFilterFields]="['username', 'email', 'birthDate','locked']">
+                             [filterDelay]="0" [globalFilterFields]="['username', 'email', 'birthDate', 'nomAgence', 'locked']">
                         <ng-template pTemplate="caption">
                             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                                 <div>
@@ -79,6 +81,13 @@
                                         <p-columnFilter type="date" field="birthDate" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
                                 </th>
+                                <th pSortableColumn="nomAgence">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Agence
+                                        <p-sortIcon field="nomAgence"></p-sortIcon>
+                                        <p-columnFilter type="text" field="nomAgence" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
 
                                 <th pSortableColumn="locked">
                                     <div class="p-d-flex p-jc-between p-ai-center">
@@ -105,6 +114,10 @@
                                 <td>
                                     <span class="p-column-title">Date d'enregistrement</span>
                                     <div >{{customer.birthDate | date: 'MM/dd/yyyy'}}</div>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Agence</span>
+                                    <div >{{ nomAgence || 'Pas d\'agence définie' }}</div>
                                 </td>
                                 <td>
                                     <span class="p-column-title">Status</span>

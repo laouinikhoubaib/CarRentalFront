@@ -26,9 +26,9 @@ export class AdminDashboardBackofficeComponent implements OnInit {
 
 
   userss: Array<User> = [];
-    nomAgence: string;
-    admins: Array<User> = [];
-
+  nomAgence: string;
+  admins: Array<User> = [];
+    currentUser: User;
 
     constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, authenticationService: AuthenticationService, private userService: UserService, private router: Router, private route: ActivatedRoute) {
     this.breadcrumbService.setItems([
@@ -36,7 +36,21 @@ export class AdminDashboardBackofficeComponent implements OnInit {
     ]);
   }
     ngOnInit() {
+        this.userService.getCurrentUser().subscribe((user: User) => {
+            this.currentUser = user;
+            this.userId = user.userId;
 
+            if (user.agence) {
+                this.nomAgence = user.agence.nom;
+            } else {
+                this.userService.getAgencyNameByUserId(user.userId).subscribe((data: any) => {
+                    this.nomAgence = data.nom;
+                }, err => {
+                    console.error(err);
+                    this.nomAgence = "";
+                });
+            }
+        });
         this.userService.getCurrentUser().subscribe(
             user => {
                 this.userId = user.userId;

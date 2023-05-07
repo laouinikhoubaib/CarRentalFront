@@ -79,7 +79,13 @@
                                         <p-columnFilter type="date" field="birthDate" display="menu" class="p-ml-auto"></p-columnFilter>
                                     </div>
                                 </th>
-
+                                <th pSortableColumn="nomAgence">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Agence
+                                        <p-sortIcon field="nomAgence"></p-sortIcon>
+                                        <p-columnFilter type="text" field="nomAgence" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
                                 <th pSortableColumn="locked">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         Status
@@ -108,6 +114,10 @@
                                 <td>
                                     <span class="p-column-title">Date d'enregistrement</span>
                                     <div >{{user.birthDate | date: 'MM/dd/yyyy'}}</div>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Agence</span>
+                                    <div >{{nomAgence}}</div>
                                 </td>
                                 <td>
                                     <span class="p-column-title">Status</span>

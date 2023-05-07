@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {User} from '../models/user.model';
-import { switchMap } from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {Agence} from '../models/agence';
 
 const API_URL = `${environment.BASE_URL}/api/user/`;
@@ -89,12 +89,12 @@ export class UserService extends  RequestBaseService{
     return this.http.get<User[]>(url);
   }
 
-  getUsersByAgence(agenceId: number): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/agence/${agenceId}`);
-  }
-
   getAgencyNameByUserId(userId: number): Observable<string> {
     const url = `${this.baseUrl}/api/user/${userId}/agencyName`;
     return this.http.get<string>(url);
+  }
+
+  getNomAgence(userId: number): Observable<string> {
+    return this.http.get<string>(`${this.baseUrl}/api/user/${userId}/agence/nom`);
   }
 }

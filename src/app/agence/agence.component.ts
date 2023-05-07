@@ -152,6 +152,4 @@ export class AgenceComponent implements OnInit {
     this.eventDialog = true;
   }
 
-
-
 }

@@ -44,9 +44,6 @@ export class RegisterComponent3 implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.roles = [Role.USER, Role.ADMIN, Role.SUPERADMIN];
     this.middleRole = Role.USER;
-    this.authenticationService.getAgences().subscribe(agences => {
-      this.agences = agences;
-    });
   }
   ngOnDestroy() {
     document.body.removeChild(this.myLinkElement);
@@ -67,7 +64,7 @@ export class RegisterComponent3 implements OnInit, OnDestroy {
     this.userParsed = JSON.stringify(this.user);
     console.log(this.userParsed);
 
-    this.authenticationService.register(this.userParsed, this.selectedFile, this.nomAgence).subscribe(data => {
+    this.authenticationService.register3(this.userParsed, this.selectedFile).subscribe(data => {
           this.router.navigate(['/login']).then(() => {
             window.location.reload();
           }); },
