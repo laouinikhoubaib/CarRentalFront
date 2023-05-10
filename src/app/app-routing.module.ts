@@ -58,6 +58,12 @@ import {
 } from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
 import {Complaint} from './models/complaint';
 import {ComplaintComponent} from './complaint/complaint.component';
+import {ChatboxComponent} from './chatbox/chatbox.component';
+import {ForumComponent} from './forum/forum.component';
+import {PostDetailsComponent} from './forum/post-details/post-details.component';
+import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
+import {UserPostsComponent} from './forum/user-posts/user-posts.component';
+
 
 
 @NgModule({
@@ -68,7 +74,11 @@ import {ComplaintComponent} from './complaint/complaint.component';
                         {path: '', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent, canActivate: [Auth2Guard]},
                         {path: 'profil/:id', component: UserDetailsComponent, canActivate: [Auth2Guard]},
-
+                        {path: 'post-detais/:id', component: PostDetailsComponent, canActivate: [Auth2Guard]},
+                        {path: 'forum', component: ForumComponent, canActivate: [Auth2Guard]},
+                        {path: 'chat', component: ChatboxComponent},
+                        {path: 'chatP', component: ChatPriveComponent},
+                        {path: 'user-post', component: UserPostsComponent},
                     ]
                 },
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
@@ -218,6 +228,7 @@ import {ComplaintComponent} from './complaint/complaint.component';
                         {path: 'pages/empty', component: EmptyDemoComponent},
                         {path: 'documentation', component: DocumentationComponent},
 
+
                     ]
                 },
 
@@ -226,7 +237,12 @@ import {ComplaintComponent} from './complaint/complaint.component';
                         {path: 'landing', component: FrontLandingComponent},
                         {path: 'profil', component: ProfilComponent},
                         {path: 'profil/:id', component: UserDetailsComponent},
-                                            ]
+                        {path: 'chat', component: ChatboxComponent},
+                        {path: 'forum', component: ForumComponent},
+                        {path: 'post-detais/:id', component: PostDetailsComponent},
+                        {path: 'user-post', component: UserPostsComponent},
+
+                    ]
                 },
                 {path: 'register', component: RegisterComponent},
                 {path: 'register2', component: RegisterComponent2},
