@@ -31,6 +31,7 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Calendrier', icon: 'pi pi-fw pi-calendar', routerLink: ['Calendrier']},
                     {label: 'Gestion des véhicules', icon: 'pi pi-fw pi-file', routerLink: ['vehicules']},
                     {label: 'Agences', icon: 'pi pi-exclamation-circle', routerLink: ['agence']},
+                    {label: 'Forum', icon: 'pi pi-fw pi-comment', routerLink: ['forumb']},
                     {label: 'Réclamations', icon: 'pi pi-exclamation-triangle', routerLink: ['complaint']}
 
                 ]

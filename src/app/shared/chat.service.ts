@@ -3,6 +3,8 @@ import { Message } from '../models/message';
 import {RequestBaseService} from './request-base.service';
 import {AuthenticationService} from './authentication.service';
 import {HttpClient} from '@angular/common/http';
+
+
 declare var SockJS;
 declare var Stomp;
 
