@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authenticationService.login(this.user).subscribe( data => {
       this.router.navigate(['user/landing']);
     }, err => {
-      this.errorMessage = 'Username or password is incorrect';
+      this.errorMessage = 'Identifiant ou mot de passe incorrecte';
       console.log(err);
     });
   }

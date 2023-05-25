@@ -1,4 +1,6 @@
 import {Alimentation} from './alimentation';
+import {CategorieVehicule} from './CategorieVehicule';
+import {Agence} from './agence';
 
 
 export class Vehicule {
@@ -12,8 +14,11 @@ export class Vehicule {
   chargeutile!: string;
   description!: string;
   dateajout!: any;
-  picture!: any;
+  picture!: string;
   jourslocation!: any;
   [key: string]: any;
+  agence?: Agence;
+  nomAgence?: string;
+  vehiculeCategorievehiculeCategories: CategorieVehicule[];
   alimentation!: Alimentation;
 }

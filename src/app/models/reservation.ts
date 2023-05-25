@@ -6,9 +6,11 @@ export class Reservation {
    datedebut: any;
    datefin: any;
    nbjour: any;
-   prix:any;
+   prix: any;
 
    vehiculeReservation: any;
    reservationVehicule: any;
-   userReservation:any;
+   userReservation: any;
+
+
 }

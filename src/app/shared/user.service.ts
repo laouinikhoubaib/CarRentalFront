@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {User} from '../models/user.model';
 import {map, switchMap} from 'rxjs/operators';
-// import { CookieService } from 'ngx-cookie-service';
+
 
 const API_URL = `${environment.BASE_URL}/api/user/`;
 

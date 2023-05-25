@@ -10,24 +10,7 @@ import { Chart } from 'chart.js';
 @Component({
     selector: 'app-complaint',
     templateUrl: './complaint.component.html',
-    styles: [`
-        :host ::ng-deep .p-dialog .product-image {
-            width: 150px;
-            margin: 0 auto 2rem auto;
-            display: block;
-        }
-
-        @media screen and (max-width: 960px) {
-            :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td:last-child {
-                text-align: center;
-            }
-
-            :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td:nth-child(6) {
-                display: flex;
-            }
-        }
-
-    `],
+    styleUrls: ['./complaint.component.scss'],
     providers: [MessageService, ConfirmationService]
 })
 export class ComplaintComponent implements OnInit {

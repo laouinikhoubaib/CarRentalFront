@@ -165,8 +165,18 @@ import {ChatComponent} from './forum/chat/chat.component';
 import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
 import {PostDetailsComponent} from './forum/post-details/post-details.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from 'ngx-pagination';
+import {ListeVehiculeFrontComponent} from './vehicule/liste-vehicule/liste-rental-front.component';
+import {ContratParOffreFrontComponent} from './vehicule/contrat-par-offre-front/contrat-par-offre-front.component';
+import {AddVehiculeFrontComponent} from './vehicule/add-rental-contrat-front/add-rental-contrat-front.component';
+import {AjoutVehiculeComponent} from './user/vehiculeBack/ajout-rental-offer/ajout-rental-offer.component';
+import {ListeVehiculesComponent} from './user/vehiculeBack/liste-rental-offer/liste-rental-offer.component';
+import {RevenuByOfferComponent} from './user/vehiculeBack/revenu-by-offer/revenu-by-offer.component';
+import {UpdateVehiculeComponent} from './user/vehiculeBack/update-rental-offer/update-rental-offer.component';
+import {ReservationComponent} from './reservation/rental-contrat.component';
+import {ListeReservationComponent} from './reservation/liste-contrat/liste-contrat.component';
+import {AddReservationComponent} from './reservation/add-rental-contrat/add-rental-contrat.component';
 
 
 
@@ -259,7 +269,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         AppCodeModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-        Ng2SearchPipeModule
+        Ng2SearchPipeModule,
+        // MatFormFieldModule,
 
 
     ],
@@ -333,6 +344,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
         ChatPriveComponent,
         PostDetailsComponent,
         UserPostsComponent,
+        ListeVehiculeFrontComponent,
+        ContratParOffreFrontComponent,
+        AjoutVehiculeComponent,
+        ListeVehiculesComponent,
+        RevenuByOfferComponent,
+        UpdateVehiculeComponent,
+        ReservationComponent,
+        ListeReservationComponent,
+        AddReservationComponent
 
 
     ],

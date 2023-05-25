@@ -4,9 +4,12 @@
     <div class="page-header min-vh-100 bg-diamond-blue" >
         <div class="container-fluid">
             <div class="row">
+
+
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="col-lg-6 col-md-12 " style="backdrop-filter: blur(15px);" >
                         <div class="card-body">
+
                             <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && register()">
                                 <div class="row justify-space-between text-center py-2">
 
@@ -15,9 +18,11 @@
                                             {{errorMessage}}
                                         </div>
                                     </div>
+
                                     <p class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: white;">
                                         Veuillez spécifier le role
                                     </p>
+
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                         <input type="radio" class="btn-check" name="role" id="role1" [(ngModel)]="middleRole" #role="ngModel" [value]="'USER'" autocomplete="off">
                                         <label class="btn btn-outline-dark" for="role1"><i class="pi pi-user"></i>&nbsp; AGENT</label>
@@ -61,6 +66,7 @@
                                         Informations de connexion
                                     </p>
                                 </div>
+
                                 <div class="input-group input-group-outline mb-3">
                                     <label class="form-label" style="color: white;">Username</label>
                                     <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
