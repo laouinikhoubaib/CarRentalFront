@@ -158,15 +158,7 @@ import {
     FAdminDashboardBackofficeComponent
 } from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
 import { ComplaintComponent } from './complaint/complaint.component';
-import {ChatboxComponent} from './chatbox/chatbox.component';
-import {ForumComponent} from './forum/forum.component';
-import {AddPostComponent} from './forum/add-post/add-post.component';
-import {ChatComponent} from './forum/chat/chat.component';
-import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
-import {PostDetailsComponent} from './forum/post-details/post-details.component';
-import {UserPostsComponent} from './forum/user-posts/user-posts.component';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
-import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 
@@ -258,8 +250,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
-        NgxPaginationModule,
-        Ng2SearchPipeModule
+        CommonModule,
+        FormsModule,
+
 
 
     ],
@@ -326,14 +319,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
         AdminDashboardBackofficeComponent,
         SAdminDashboardBackofficeComponent,
         ComplaintComponent,
-        ChatboxComponent,
-        ForumComponent,
-        AddPostComponent,
-        ChatComponent,
-        ChatPriveComponent,
-        PostDetailsComponent,
-        UserPostsComponent,
-
 
     ],
     providers: [

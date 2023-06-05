@@ -1,4 +1,4 @@
-import {Role} from './role.enum';
+import {Role} from "./role.enum";
 import {Agence} from './agence';
 import {Complaint} from './complaint';
 
