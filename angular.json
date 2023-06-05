@@ -106,10 +106,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/sockjs-client/dist/sockjs.min.js",
-              "node_modules/stompjs/stomp.min.js"
-            ]
+            "scripts": []
 
           }
         },
